@@ -1,0 +1,220 @@
+{
+  "program_version": "1.0.0",
+  "program_sha256": "18f495001e2dce2201fa069f498b3829f8b1f4eda8b722312691d45a4a4915eb",
+  "models": [
+    {
+      "file": "heskia_28.json",
+      "valid": true,
+      "nodes": 28,
+      "edges": 39,
+      "default_config": {
+        "jobs": 60,
+        "runs": 1,
+        "interval": 1.0,
+        "seed": 42,
+        "improvement": 0.1,
+        "sensitivity": true,
+        "all_traces": false
+      },
+      "default_makespan": {
+        "mean": 6839.0,
+        "sd": null,
+        "ci_low": null,
+        "ci_high": null,
+        "n": 1
+      },
+      "single_product_expected": 467,
+      "single_product_actual": 467.0,
+      "improvement_top": [
+        "N13"
+      ]
+    },
+    {
+      "file": "jackson_11.json",
+      "valid": true,
+      "nodes": 11,
+      "edges": 13,
+      "default_config": {
+        "jobs": 60,
+        "runs": 1,
+        "interval": 1.0,
+        "seed": 42,
+        "improvement": 0.1,
+        "sensitivity": true,
+        "all_traces": false
+      },
+      "default_makespan": {
+        "mean": 438.0,
+        "sd": null,
+        "ci_low": null,
+        "ci_high": null,
+        "n": 1
+      },
+      "single_product_expected": 25,
+      "single_product_actual": 25.0,
+      "improvement_top": [
+        "N04"
+      ]
+    },
+    {
+      "file": "mitchell_21.json",
+      "valid": true,
+      "nodes": 21,
+      "edges": 27,
+      "default_config": {
+        "jobs": 60,
+        "runs": 1,
+        "interval": 1.0,
+        "seed": 42,
+        "improvement": 0.1,
+        "sensitivity": true,
+        "all_traces": false
+      },
+      "default_makespan": {
+        "mean": 841.0,
+        "sd": null,
+        "ci_low": null,
+        "ci_high": null,
+        "n": 1
+      },
+      "single_product_expected": 74,
+      "single_product_actual": 74.0,
+      "improvement_top": [
+        "N17"
+      ]
+    },
+    {
+      "file": "smart_factory_10_lognormal.json",
+      "valid": true,
+      "nodes": 10,
+      "edges": 9,
+      "default_config": {
+        "jobs": 1,
+        "runs": 50,
+        "interval": 0.0,
+        "seed": 42,
+        "improvement": 0.1,
+        "sensitivity": true,
+        "all_traces": false
+      },
+      "default_makespan": {
+        "mean": 239.1898724076655,
+        "sd": 11.720775375570245,
+        "ci_low": 235.85886490195665,
+        "ci_high": 242.52087991337433,
+        "n": 50
+      },
+      "single_product_expected": null,
+      "single_product_actual": null,
+      "improvement_top": [
+        "P03"
+      ]
+    },
+    {
+      "file": "smart_factory_10_mean.json",
+      "valid": true,
+      "nodes": 10,
+      "edges": 9,
+      "default_config": {
+        "jobs": 1,
+        "runs": 1,
+        "interval": 0.0,
+        "seed": 42,
+        "improvement": 0.1,
+        "sensitivity": true,
+        "all_traces": false
+      },
+      "default_makespan": {
+        "mean": 238.1592666666667,
+        "sd": null,
+        "ci_low": null,
+        "ci_high": null,
+        "n": 1
+      },
+      "single_product_expected": 238.15926666666667,
+      "single_product_actual": 238.1592666666667,
+      "improvement_top": [
+        "P03"
+      ]
+    }
+  ],
+  "empirical_single_product_replay_cases": 15,
+  "replay_results": [
+    {
+      "case_id": "7cbdbfa9-d840-11ed-8f8e-2a1b4c3d6e5f",
+      "expected": 263.728,
+      "actual": 263.728
+    },
+    {
+      "case_id": "2b33766d-d841-11ed-8f8e-2a1b4c3d6e5f",
+      "expected": 258.878,
+      "actual": 258.878
+    },
+    {
+      "case_id": "d0189845-d841-11ed-8f8e-2a1b4c3d6e5f",
+      "expected": 220.732,
+      "actual": 220.73199999999997
+    },
+    {
+      "case_id": "5d1a0219-d842-11ed-8f8e-2a1b4c3d6e5f",
+      "expected": 237.766,
+      "actual": 237.766
+    },
+    {
+      "case_id": "f3de8199-d842-11ed-8f8e-2a1b4c3d6e5f",
+      "expected": 243.66299999999998,
+      "actual": 243.66299999999995
+    },
+    {
+      "case_id": "816af705-d844-11ed-8f8e-2a1b4c3d6e5f",
+      "expected": 235.936,
+      "actual": 235.93599999999998
+    },
+    {
+      "case_id": "17674489-d845-11ed-8f8e-2a1b4c3d6e5f",
+      "expected": 235.339,
+      "actual": 235.33899999999997
+    },
+    {
+      "case_id": "3729d779-d847-11ed-8f8e-2a1b4c3d6e5f",
+      "expected": 230.845,
+      "actual": 230.84499999999997
+    },
+    {
+      "case_id": "cb22b3cd-d847-11ed-8f8e-2a1b4c3d6e5f",
+      "expected": 236.589,
+      "actual": 236.589
+    },
+    {
+      "case_id": "1900d2d5-d849-11ed-8f8e-2a1b4c3d6e5f",
+      "expected": 245.008,
+      "actual": 245.008
+    },
+    {
+      "case_id": "b4cb06e9-d849-11ed-8f8e-2a1b4c3d6e5f",
+      "expected": 234.402,
+      "actual": 234.40199999999996
+    },
+    {
+      "case_id": "4a3fd4dd-d84a-11ed-8f8e-2a1b4c3d6e5f",
+      "expected": 238.471,
+      "actual": 238.471
+    },
+    {
+      "case_id": "48663cdd-d84b-11ed-8f8e-2a1b4c3d6e5f",
+      "expected": 219.37099999999998,
+      "actual": 219.371
+    },
+    {
+      "case_id": "331dac0d-d84c-11ed-8f8e-2a1b4c3d6e5f",
+      "expected": 227.994,
+      "actual": 227.99399999999997
+    },
+    {
+      "case_id": "c3c588a1-d84c-11ed-8f8e-2a1b4c3d6e5f",
+      "expected": 243.667,
+      "actual": 243.66699999999997
+    }
+  ],
+  "scope": "Compatibility and numerical consistency only. Not validation of factory capacity, bottlenecks or distribution family."
+}

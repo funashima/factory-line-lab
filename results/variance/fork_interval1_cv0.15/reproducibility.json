@@ -1,0 +1,26 @@
+{
+  "program": "1.0.0",
+  "python": "3.12.14",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+  "libraries": {
+    "numpy": "2.3.5",
+    "networkx": "3.7",
+    "scipy": "1.17.0",
+    "matplotlib": "3.10.8",
+    "PyQt6": "6.11.0",
+    "pyqtgraph": "0.14.0"
+  },
+  "code_sha256": "18f495001e2dce2201fa069f498b3829f8b1f4eda8b722312691d45a4a4915eb",
+  "config": {
+    "jobs": 60,
+    "runs": 50,
+    "interval": 1.0,
+    "seed": 42,
+    "improvement": 0.1,
+    "sensitivity": true,
+    "all_traces": false
+  },
+  "rng": "PCG64/SeedSequence(seed,run,SHA256(node_id)[0:16])",
+  "trace_scope": "baseline run 0 only",
+  "semantics": "Each product visits all nodes once; AND joins; FCFS; unlimited buffers; independent service times"
+}

@@ -1,0 +1,9 @@
+{
+  "jobs": 60,
+  "runs": 50,
+  "interval": 1.0,
+  "seed": 42,
+  "improvement": 0.1,
+  "sensitivity": true,
+  "all_traces": false
+}

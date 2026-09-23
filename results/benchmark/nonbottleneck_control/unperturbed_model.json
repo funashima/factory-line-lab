@@ -1,0 +1,241 @@
+{
+  "meta": {
+    "version": 2,
+    "program": "1.0.0",
+    "semantics": "AND-fork-join/FCFS/unlimited-buffer"
+  },
+  "nodes": [
+    {
+      "id": "N01",
+      "name": "Process 01",
+      "service": {
+        "dist": "constant",
+        "p1": 2,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N02",
+      "name": "Process 02",
+      "service": {
+        "dist": "constant",
+        "p1": 2,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N03",
+      "name": "Process 03",
+      "service": {
+        "dist": "constant",
+        "p1": 1,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N04",
+      "name": "Process 04",
+      "service": {
+        "dist": "constant",
+        "p1": 2,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N05",
+      "name": "Process 05",
+      "service": {
+        "dist": "constant",
+        "p1": 2,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N06",
+      "name": "Process 06",
+      "service": {
+        "dist": "constant",
+        "p1": 8,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N07",
+      "name": "Process 07",
+      "service": {
+        "dist": "constant",
+        "p1": 2,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N08",
+      "name": "Process 08",
+      "service": {
+        "dist": "constant",
+        "p1": 2,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N09",
+      "name": "Process 09",
+      "service": {
+        "dist": "constant",
+        "p1": 2,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N10",
+      "name": "Process 10",
+      "service": {
+        "dist": "constant",
+        "p1": 2,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N11",
+      "name": "Process 11",
+      "service": {
+        "dist": "constant",
+        "p1": 2,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N12",
+      "name": "Process 12",
+      "service": {
+        "dist": "constant",
+        "p1": 2,
+        "p2": 0
+      },
+      "capacity": 1
+    }
+  ],
+  "edges": [
+    {
+      "id": "E00",
+      "src": "N01",
+      "dst": "N02"
+    },
+    {
+      "id": "E01",
+      "src": "N02",
+      "dst": "N03"
+    },
+    {
+      "id": "E04",
+      "src": "N02",
+      "dst": "N06"
+    },
+    {
+      "id": "E02",
+      "src": "N03",
+      "dst": "N04"
+    },
+    {
+      "id": "E03",
+      "src": "N04",
+      "dst": "N05"
+    },
+    {
+      "id": "E07",
+      "src": "N05",
+      "dst": "N09"
+    },
+    {
+      "id": "E05",
+      "src": "N06",
+      "dst": "N07"
+    },
+    {
+      "id": "E06",
+      "src": "N07",
+      "dst": "N08"
+    },
+    {
+      "id": "E08",
+      "src": "N08",
+      "dst": "N09"
+    },
+    {
+      "id": "E09",
+      "src": "N09",
+      "dst": "N10"
+    },
+    {
+      "id": "E10",
+      "src": "N10",
+      "dst": "N11"
+    },
+    {
+      "id": "E11",
+      "src": "N11",
+      "dst": "N12"
+    }
+  ],
+  "layout": {
+    "N01": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "N02": {
+      "x": 210.0,
+      "y": 0.0
+    },
+    "N03": {
+      "x": 420.0,
+      "y": -62.5
+    },
+    "N06": {
+      "x": 420.0,
+      "y": 62.5
+    },
+    "N04": {
+      "x": 630.0,
+      "y": -62.5
+    },
+    "N07": {
+      "x": 630.0,
+      "y": 62.5
+    },
+    "N05": {
+      "x": 840.0,
+      "y": -62.5
+    },
+    "N08": {
+      "x": 840.0,
+      "y": 62.5
+    },
+    "N09": {
+      "x": 1050.0,
+      "y": 0.0
+    },
+    "N10": {
+      "x": 1260.0,
+      "y": 0.0
+    },
+    "N11": {
+      "x": 1470.0,
+      "y": 0.0
+    },
+    "N12": {
+      "x": 1680.0,
+      "y": 0.0
+    }
+  }
+}

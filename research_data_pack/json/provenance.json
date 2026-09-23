@@ -1,0 +1,1598 @@
+{
+  "retrieved_on": "2026-09-23",
+  "converter_version": "1.0.0",
+  "source_sha256": {
+    "scholl1993/JACKSON.IN2": "70eaccc7b34dc4e65649888695e4cef4039e0dd810ad3a9c9b867718093de4ac",
+    "scholl1993/MITCHELL.IN2": "96387ea78feb52efc96556f60fc02958adf8bf329c0503719ca1afc101117165",
+    "scholl1993/HESKIA.IN2": "2b4558e1e1aa9c013a61bb08d917639398bd39acdf638c6eea30f44c51b80908",
+    "scholl1993/README.DOC": "987e400302cd0573779fbe47808ad02521bb2cdc456da76825810336808b99d0",
+    "zenodo_14441997/camunda-activity.json": "4b076db16761a0ccc300b150afe2284bf57e8f8afd68fe2e3b130c6b6eaed154",
+    "zenodo_14441997/camunda-process.json": "e0c59de80c667baaa001fd44a1494874338dd5375f5b3db69040b53b3fc6cb07",
+    "zenodo_14441997/production_process.bpmn": "cb68fc08e5f22d7fcf39f9eae36372b2572d75a590dad33891d31881781491f7"
+  },
+  "published_zenodo_md5": {
+    "camunda-activity.json": "6ec66ad7eddba76c7dedf28a86afb170",
+    "camunda-process.json": "a56fb7b92ad99a8106ff3c75a2d94c6f",
+    "production_process.bpmn": "52991ff8d58878d6ef1ae94a9c8d3bf3"
+  },
+  "benchmarks": {
+    "jackson_11": {
+      "source": {
+        "title": "Scholl (1993), Data of Assembly Line Balancing Problems",
+        "landing_url": "https://assembly-line-balancing.de/salbp/benchmark-data-sets-1993/",
+        "download_url": "https://assembly-line-balancing.de/wp-content/uploads/2017/01/SALBP-data-sets.zip",
+        "archive_member": "precedence graphs/JACKSON.IN2",
+        "local_path": "sources/scholl1993/JACKSON.IN2",
+        "sha256": "70eaccc7b34dc4e65649888695e4cef4039e0dd810ad3a9c9b867718093de4ac"
+      },
+      "assumptions": {
+        "source_facts": "Task times and every listed precedence pair are unchanged.",
+        "time_unit": "Not specified in IN2; abstract benchmark units, not assumed seconds.",
+        "resource_capacity": "One dedicated resource per task is an added modeling assumption, not a source observation.",
+        "source_problem": "SALBP assigns tasks to shared work stations; this simulator does not solve that assignment problem.",
+        "variability": "No repeated measurements or standard deviations supplied; use constant, p2=0.",
+        "configuration": "60 products, interval 1 and 10% improvement are chosen experiment conditions, not measurements.",
+        "layout": "Generated display coordinates; not a physical factory floor plan.",
+        "other": "Unlimited buffers, no transport delay, FCFS, all tasks once per product."
+      },
+      "task_count": 11,
+      "edge_count": 13,
+      "task_time_sum": 46,
+      "task_time_max": 7,
+      "single_product_critical_path_time": 25,
+      "source_nodes": [
+        {
+          "model_node": "N01",
+          "source_task": 1,
+          "source_line": 2,
+          "task_time": 6
+        },
+        {
+          "model_node": "N02",
+          "source_task": 2,
+          "source_line": 3,
+          "task_time": 2
+        },
+        {
+          "model_node": "N03",
+          "source_task": 3,
+          "source_line": 4,
+          "task_time": 5
+        },
+        {
+          "model_node": "N04",
+          "source_task": 4,
+          "source_line": 5,
+          "task_time": 7
+        },
+        {
+          "model_node": "N05",
+          "source_task": 5,
+          "source_line": 6,
+          "task_time": 1
+        },
+        {
+          "model_node": "N06",
+          "source_task": 6,
+          "source_line": 7,
+          "task_time": 2
+        },
+        {
+          "model_node": "N07",
+          "source_task": 7,
+          "source_line": 8,
+          "task_time": 3
+        },
+        {
+          "model_node": "N08",
+          "source_task": 8,
+          "source_line": 9,
+          "task_time": 6
+        },
+        {
+          "model_node": "N09",
+          "source_task": 9,
+          "source_line": 10,
+          "task_time": 5
+        },
+        {
+          "model_node": "N10",
+          "source_task": 10,
+          "source_line": 11,
+          "task_time": 5
+        },
+        {
+          "model_node": "N11",
+          "source_task": 11,
+          "source_line": 12,
+          "task_time": 4
+        }
+      ],
+      "source_edges": [
+        {
+          "source_line": 13,
+          "source_pair": [
+            1,
+            2
+          ],
+          "model_pair": [
+            "N01",
+            "N02"
+          ]
+        },
+        {
+          "source_line": 14,
+          "source_pair": [
+            1,
+            3
+          ],
+          "model_pair": [
+            "N01",
+            "N03"
+          ]
+        },
+        {
+          "source_line": 15,
+          "source_pair": [
+            1,
+            4
+          ],
+          "model_pair": [
+            "N01",
+            "N04"
+          ]
+        },
+        {
+          "source_line": 16,
+          "source_pair": [
+            1,
+            5
+          ],
+          "model_pair": [
+            "N01",
+            "N05"
+          ]
+        },
+        {
+          "source_line": 17,
+          "source_pair": [
+            2,
+            6
+          ],
+          "model_pair": [
+            "N02",
+            "N06"
+          ]
+        },
+        {
+          "source_line": 18,
+          "source_pair": [
+            3,
+            7
+          ],
+          "model_pair": [
+            "N03",
+            "N07"
+          ]
+        },
+        {
+          "source_line": 19,
+          "source_pair": [
+            4,
+            7
+          ],
+          "model_pair": [
+            "N04",
+            "N07"
+          ]
+        },
+        {
+          "source_line": 20,
+          "source_pair": [
+            5,
+            7
+          ],
+          "model_pair": [
+            "N05",
+            "N07"
+          ]
+        },
+        {
+          "source_line": 21,
+          "source_pair": [
+            6,
+            8
+          ],
+          "model_pair": [
+            "N06",
+            "N08"
+          ]
+        },
+        {
+          "source_line": 22,
+          "source_pair": [
+            7,
+            9
+          ],
+          "model_pair": [
+            "N07",
+            "N09"
+          ]
+        },
+        {
+          "source_line": 23,
+          "source_pair": [
+            8,
+            10
+          ],
+          "model_pair": [
+            "N08",
+            "N10"
+          ]
+        },
+        {
+          "source_line": 24,
+          "source_pair": [
+            9,
+            11
+          ],
+          "model_pair": [
+            "N09",
+            "N11"
+          ]
+        },
+        {
+          "source_line": 25,
+          "source_pair": [
+            10,
+            11
+          ],
+          "model_pair": [
+            "N10",
+            "N11"
+          ]
+        }
+      ]
+    },
+    "mitchell_21": {
+      "source": {
+        "title": "Scholl (1993), Data of Assembly Line Balancing Problems",
+        "landing_url": "https://assembly-line-balancing.de/salbp/benchmark-data-sets-1993/",
+        "download_url": "https://assembly-line-balancing.de/wp-content/uploads/2017/01/SALBP-data-sets.zip",
+        "archive_member": "precedence graphs/MITCHELL.IN2",
+        "local_path": "sources/scholl1993/MITCHELL.IN2",
+        "sha256": "96387ea78feb52efc96556f60fc02958adf8bf329c0503719ca1afc101117165"
+      },
+      "assumptions": {
+        "source_facts": "Task times and every listed precedence pair are unchanged.",
+        "time_unit": "Not specified in IN2; abstract benchmark units, not assumed seconds.",
+        "resource_capacity": "One dedicated resource per task is an added modeling assumption, not a source observation.",
+        "source_problem": "SALBP assigns tasks to shared work stations; this simulator does not solve that assignment problem.",
+        "variability": "No repeated measurements or standard deviations supplied; use constant, p2=0.",
+        "configuration": "60 products, interval 1 and 10% improvement are chosen experiment conditions, not measurements.",
+        "layout": "Generated display coordinates; not a physical factory floor plan.",
+        "other": "Unlimited buffers, no transport delay, FCFS, all tasks once per product."
+      },
+      "task_count": 21,
+      "edge_count": 27,
+      "task_time_sum": 105,
+      "task_time_max": 13,
+      "single_product_critical_path_time": 74,
+      "source_nodes": [
+        {
+          "model_node": "N01",
+          "source_task": 1,
+          "source_line": 2,
+          "task_time": 4
+        },
+        {
+          "model_node": "N02",
+          "source_task": 2,
+          "source_line": 3,
+          "task_time": 3
+        },
+        {
+          "model_node": "N03",
+          "source_task": 3,
+          "source_line": 4,
+          "task_time": 9
+        },
+        {
+          "model_node": "N04",
+          "source_task": 4,
+          "source_line": 5,
+          "task_time": 5
+        },
+        {
+          "model_node": "N05",
+          "source_task": 5,
+          "source_line": 6,
+          "task_time": 9
+        },
+        {
+          "model_node": "N06",
+          "source_task": 6,
+          "source_line": 7,
+          "task_time": 4
+        },
+        {
+          "model_node": "N07",
+          "source_task": 7,
+          "source_line": 8,
+          "task_time": 8
+        },
+        {
+          "model_node": "N08",
+          "source_task": 8,
+          "source_line": 9,
+          "task_time": 7
+        },
+        {
+          "model_node": "N09",
+          "source_task": 9,
+          "source_line": 10,
+          "task_time": 5
+        },
+        {
+          "model_node": "N10",
+          "source_task": 10,
+          "source_line": 11,
+          "task_time": 1
+        },
+        {
+          "model_node": "N11",
+          "source_task": 11,
+          "source_line": 12,
+          "task_time": 3
+        },
+        {
+          "model_node": "N12",
+          "source_task": 12,
+          "source_line": 13,
+          "task_time": 1
+        },
+        {
+          "model_node": "N13",
+          "source_task": 13,
+          "source_line": 14,
+          "task_time": 5
+        },
+        {
+          "model_node": "N14",
+          "source_task": 14,
+          "source_line": 15,
+          "task_time": 3
+        },
+        {
+          "model_node": "N15",
+          "source_task": 15,
+          "source_line": 16,
+          "task_time": 5
+        },
+        {
+          "model_node": "N16",
+          "source_task": 16,
+          "source_line": 17,
+          "task_time": 3
+        },
+        {
+          "model_node": "N17",
+          "source_task": 17,
+          "source_line": 18,
+          "task_time": 13
+        },
+        {
+          "model_node": "N18",
+          "source_task": 18,
+          "source_line": 19,
+          "task_time": 5
+        },
+        {
+          "model_node": "N19",
+          "source_task": 19,
+          "source_line": 20,
+          "task_time": 2
+        },
+        {
+          "model_node": "N20",
+          "source_task": 20,
+          "source_line": 21,
+          "task_time": 3
+        },
+        {
+          "model_node": "N21",
+          "source_task": 21,
+          "source_line": 22,
+          "task_time": 7
+        }
+      ],
+      "source_edges": [
+        {
+          "source_line": 23,
+          "source_pair": [
+            1,
+            2
+          ],
+          "model_pair": [
+            "N01",
+            "N02"
+          ]
+        },
+        {
+          "source_line": 24,
+          "source_pair": [
+            1,
+            3
+          ],
+          "model_pair": [
+            "N01",
+            "N03"
+          ]
+        },
+        {
+          "source_line": 25,
+          "source_pair": [
+            2,
+            21
+          ],
+          "model_pair": [
+            "N02",
+            "N21"
+          ]
+        },
+        {
+          "source_line": 26,
+          "source_pair": [
+            3,
+            4
+          ],
+          "model_pair": [
+            "N03",
+            "N04"
+          ]
+        },
+        {
+          "source_line": 27,
+          "source_pair": [
+            4,
+            5
+          ],
+          "model_pair": [
+            "N04",
+            "N05"
+          ]
+        },
+        {
+          "source_line": 28,
+          "source_pair": [
+            4,
+            21
+          ],
+          "model_pair": [
+            "N04",
+            "N21"
+          ]
+        },
+        {
+          "source_line": 29,
+          "source_pair": [
+            5,
+            6
+          ],
+          "model_pair": [
+            "N05",
+            "N06"
+          ]
+        },
+        {
+          "source_line": 30,
+          "source_pair": [
+            5,
+            7
+          ],
+          "model_pair": [
+            "N05",
+            "N07"
+          ]
+        },
+        {
+          "source_line": 31,
+          "source_pair": [
+            6,
+            8
+          ],
+          "model_pair": [
+            "N06",
+            "N08"
+          ]
+        },
+        {
+          "source_line": 32,
+          "source_pair": [
+            7,
+            8
+          ],
+          "model_pair": [
+            "N07",
+            "N08"
+          ]
+        },
+        {
+          "source_line": 33,
+          "source_pair": [
+            7,
+            14
+          ],
+          "model_pair": [
+            "N07",
+            "N14"
+          ]
+        },
+        {
+          "source_line": 34,
+          "source_pair": [
+            8,
+            9
+          ],
+          "model_pair": [
+            "N08",
+            "N09"
+          ]
+        },
+        {
+          "source_line": 35,
+          "source_pair": [
+            9,
+            10
+          ],
+          "model_pair": [
+            "N09",
+            "N10"
+          ]
+        },
+        {
+          "source_line": 36,
+          "source_pair": [
+            9,
+            11
+          ],
+          "model_pair": [
+            "N09",
+            "N11"
+          ]
+        },
+        {
+          "source_line": 37,
+          "source_pair": [
+            9,
+            12
+          ],
+          "model_pair": [
+            "N09",
+            "N12"
+          ]
+        },
+        {
+          "source_line": 38,
+          "source_pair": [
+            9,
+            13
+          ],
+          "model_pair": [
+            "N09",
+            "N13"
+          ]
+        },
+        {
+          "source_line": 39,
+          "source_pair": [
+            10,
+            15
+          ],
+          "model_pair": [
+            "N10",
+            "N15"
+          ]
+        },
+        {
+          "source_line": 40,
+          "source_pair": [
+            11,
+            15
+          ],
+          "model_pair": [
+            "N11",
+            "N15"
+          ]
+        },
+        {
+          "source_line": 41,
+          "source_pair": [
+            12,
+            15
+          ],
+          "model_pair": [
+            "N12",
+            "N15"
+          ]
+        },
+        {
+          "source_line": 42,
+          "source_pair": [
+            13,
+            17
+          ],
+          "model_pair": [
+            "N13",
+            "N17"
+          ]
+        },
+        {
+          "source_line": 43,
+          "source_pair": [
+            13,
+            18
+          ],
+          "model_pair": [
+            "N13",
+            "N18"
+          ]
+        },
+        {
+          "source_line": 44,
+          "source_pair": [
+            14,
+            19
+          ],
+          "model_pair": [
+            "N14",
+            "N19"
+          ]
+        },
+        {
+          "source_line": 45,
+          "source_pair": [
+            15,
+            16
+          ],
+          "model_pair": [
+            "N15",
+            "N16"
+          ]
+        },
+        {
+          "source_line": 46,
+          "source_pair": [
+            15,
+            18
+          ],
+          "model_pair": [
+            "N15",
+            "N18"
+          ]
+        },
+        {
+          "source_line": 47,
+          "source_pair": [
+            16,
+            17
+          ],
+          "model_pair": [
+            "N16",
+            "N17"
+          ]
+        },
+        {
+          "source_line": 48,
+          "source_pair": [
+            17,
+            20
+          ],
+          "model_pair": [
+            "N17",
+            "N20"
+          ]
+        },
+        {
+          "source_line": 49,
+          "source_pair": [
+            18,
+            19
+          ],
+          "model_pair": [
+            "N18",
+            "N19"
+          ]
+        }
+      ]
+    },
+    "heskia_28": {
+      "source": {
+        "title": "Scholl (1993), Data of Assembly Line Balancing Problems",
+        "landing_url": "https://assembly-line-balancing.de/salbp/benchmark-data-sets-1993/",
+        "download_url": "https://assembly-line-balancing.de/wp-content/uploads/2017/01/SALBP-data-sets.zip",
+        "archive_member": "precedence graphs/HESKIA.IN2",
+        "local_path": "sources/scholl1993/HESKIA.IN2",
+        "sha256": "2b4558e1e1aa9c013a61bb08d917639398bd39acdf638c6eea30f44c51b80908"
+      },
+      "assumptions": {
+        "source_facts": "Task times and every listed precedence pair are unchanged.",
+        "time_unit": "Not specified in IN2; abstract benchmark units, not assumed seconds.",
+        "resource_capacity": "One dedicated resource per task is an added modeling assumption, not a source observation.",
+        "source_problem": "SALBP assigns tasks to shared work stations; this simulator does not solve that assignment problem.",
+        "variability": "No repeated measurements or standard deviations supplied; use constant, p2=0.",
+        "configuration": "60 products, interval 1 and 10% improvement are chosen experiment conditions, not measurements.",
+        "layout": "Generated display coordinates; not a physical factory floor plan.",
+        "other": "Unlimited buffers, no transport delay, FCFS, all tasks once per product."
+      },
+      "task_count": 28,
+      "edge_count": 39,
+      "task_time_sum": 1024,
+      "task_time_max": 108,
+      "single_product_critical_path_time": 467,
+      "source_nodes": [
+        {
+          "model_node": "N01",
+          "source_task": 1,
+          "source_line": 2,
+          "task_time": 70
+        },
+        {
+          "model_node": "N02",
+          "source_task": 2,
+          "source_line": 3,
+          "task_time": 59
+        },
+        {
+          "model_node": "N03",
+          "source_task": 3,
+          "source_line": 4,
+          "task_time": 33
+        },
+        {
+          "model_node": "N04",
+          "source_task": 4,
+          "source_line": 5,
+          "task_time": 6
+        },
+        {
+          "model_node": "N05",
+          "source_task": 5,
+          "source_line": 6,
+          "task_time": 1
+        },
+        {
+          "model_node": "N06",
+          "source_task": 6,
+          "source_line": 7,
+          "task_time": 27
+        },
+        {
+          "model_node": "N07",
+          "source_task": 7,
+          "source_line": 8,
+          "task_time": 17
+        },
+        {
+          "model_node": "N08",
+          "source_task": 8,
+          "source_line": 9,
+          "task_time": 62
+        },
+        {
+          "model_node": "N09",
+          "source_task": 9,
+          "source_line": 10,
+          "task_time": 31
+        },
+        {
+          "model_node": "N10",
+          "source_task": 10,
+          "source_line": 11,
+          "task_time": 53
+        },
+        {
+          "model_node": "N11",
+          "source_task": 11,
+          "source_line": 12,
+          "task_time": 21
+        },
+        {
+          "model_node": "N12",
+          "source_task": 12,
+          "source_line": 13,
+          "task_time": 19
+        },
+        {
+          "model_node": "N13",
+          "source_task": 13,
+          "source_line": 14,
+          "task_time": 108
+        },
+        {
+          "model_node": "N14",
+          "source_task": 14,
+          "source_line": 15,
+          "task_time": 52
+        },
+        {
+          "model_node": "N15",
+          "source_task": 15,
+          "source_line": 16,
+          "task_time": 5
+        },
+        {
+          "model_node": "N16",
+          "source_task": 16,
+          "source_line": 17,
+          "task_time": 8
+        },
+        {
+          "model_node": "N17",
+          "source_task": 17,
+          "source_line": 18,
+          "task_time": 97
+        },
+        {
+          "model_node": "N18",
+          "source_task": 18,
+          "source_line": 19,
+          "task_time": 8
+        },
+        {
+          "model_node": "N19",
+          "source_task": 19,
+          "source_line": 20,
+          "task_time": 47
+        },
+        {
+          "model_node": "N20",
+          "source_task": 20,
+          "source_line": 21,
+          "task_time": 67
+        },
+        {
+          "model_node": "N21",
+          "source_task": 21,
+          "source_line": 22,
+          "task_time": 17
+        },
+        {
+          "model_node": "N22",
+          "source_task": 22,
+          "source_line": 23,
+          "task_time": 8
+        },
+        {
+          "model_node": "N23",
+          "source_task": 23,
+          "source_line": 24,
+          "task_time": 3
+        },
+        {
+          "model_node": "N24",
+          "source_task": 24,
+          "source_line": 25,
+          "task_time": 21
+        },
+        {
+          "model_node": "N25",
+          "source_task": 25,
+          "source_line": 26,
+          "task_time": 107
+        },
+        {
+          "model_node": "N26",
+          "source_task": 26,
+          "source_line": 27,
+          "task_time": 3
+        },
+        {
+          "model_node": "N27",
+          "source_task": 27,
+          "source_line": 28,
+          "task_time": 2
+        },
+        {
+          "model_node": "N28",
+          "source_task": 28,
+          "source_line": 29,
+          "task_time": 72
+        }
+      ],
+      "source_edges": [
+        {
+          "source_line": 30,
+          "source_pair": [
+            1,
+            3
+          ],
+          "model_pair": [
+            "N01",
+            "N03"
+          ]
+        },
+        {
+          "source_line": 31,
+          "source_pair": [
+            1,
+            4
+          ],
+          "model_pair": [
+            "N01",
+            "N04"
+          ]
+        },
+        {
+          "source_line": 32,
+          "source_pair": [
+            1,
+            5
+          ],
+          "model_pair": [
+            "N01",
+            "N05"
+          ]
+        },
+        {
+          "source_line": 33,
+          "source_pair": [
+            1,
+            8
+          ],
+          "model_pair": [
+            "N01",
+            "N08"
+          ]
+        },
+        {
+          "source_line": 34,
+          "source_pair": [
+            1,
+            19
+          ],
+          "model_pair": [
+            "N01",
+            "N19"
+          ]
+        },
+        {
+          "source_line": 35,
+          "source_pair": [
+            1,
+            21
+          ],
+          "model_pair": [
+            "N01",
+            "N21"
+          ]
+        },
+        {
+          "source_line": 36,
+          "source_pair": [
+            1,
+            22
+          ],
+          "model_pair": [
+            "N01",
+            "N22"
+          ]
+        },
+        {
+          "source_line": 37,
+          "source_pair": [
+            1,
+            23
+          ],
+          "model_pair": [
+            "N01",
+            "N23"
+          ]
+        },
+        {
+          "source_line": 38,
+          "source_pair": [
+            1,
+            24
+          ],
+          "model_pair": [
+            "N01",
+            "N24"
+          ]
+        },
+        {
+          "source_line": 39,
+          "source_pair": [
+            1,
+            26
+          ],
+          "model_pair": [
+            "N01",
+            "N26"
+          ]
+        },
+        {
+          "source_line": 40,
+          "source_pair": [
+            2,
+            6
+          ],
+          "model_pair": [
+            "N02",
+            "N06"
+          ]
+        },
+        {
+          "source_line": 41,
+          "source_pair": [
+            2,
+            17
+          ],
+          "model_pair": [
+            "N02",
+            "N17"
+          ]
+        },
+        {
+          "source_line": 42,
+          "source_pair": [
+            3,
+            28
+          ],
+          "model_pair": [
+            "N03",
+            "N28"
+          ]
+        },
+        {
+          "source_line": 43,
+          "source_pair": [
+            4,
+            28
+          ],
+          "model_pair": [
+            "N04",
+            "N28"
+          ]
+        },
+        {
+          "source_line": 44,
+          "source_pair": [
+            5,
+            28
+          ],
+          "model_pair": [
+            "N05",
+            "N28"
+          ]
+        },
+        {
+          "source_line": 45,
+          "source_pair": [
+            6,
+            7
+          ],
+          "model_pair": [
+            "N06",
+            "N07"
+          ]
+        },
+        {
+          "source_line": 46,
+          "source_pair": [
+            7,
+            18
+          ],
+          "model_pair": [
+            "N07",
+            "N18"
+          ]
+        },
+        {
+          "source_line": 47,
+          "source_pair": [
+            8,
+            9
+          ],
+          "model_pair": [
+            "N08",
+            "N09"
+          ]
+        },
+        {
+          "source_line": 48,
+          "source_pair": [
+            9,
+            10
+          ],
+          "model_pair": [
+            "N09",
+            "N10"
+          ]
+        },
+        {
+          "source_line": 49,
+          "source_pair": [
+            10,
+            11
+          ],
+          "model_pair": [
+            "N10",
+            "N11"
+          ]
+        },
+        {
+          "source_line": 50,
+          "source_pair": [
+            10,
+            12
+          ],
+          "model_pair": [
+            "N10",
+            "N12"
+          ]
+        },
+        {
+          "source_line": 51,
+          "source_pair": [
+            11,
+            15
+          ],
+          "model_pair": [
+            "N11",
+            "N15"
+          ]
+        },
+        {
+          "source_line": 52,
+          "source_pair": [
+            12,
+            13
+          ],
+          "model_pair": [
+            "N12",
+            "N13"
+          ]
+        },
+        {
+          "source_line": 53,
+          "source_pair": [
+            13,
+            14
+          ],
+          "model_pair": [
+            "N13",
+            "N14"
+          ]
+        },
+        {
+          "source_line": 54,
+          "source_pair": [
+            13,
+            16
+          ],
+          "model_pair": [
+            "N13",
+            "N16"
+          ]
+        },
+        {
+          "source_line": 55,
+          "source_pair": [
+            14,
+            28
+          ],
+          "model_pair": [
+            "N14",
+            "N28"
+          ]
+        },
+        {
+          "source_line": 56,
+          "source_pair": [
+            15,
+            28
+          ],
+          "model_pair": [
+            "N15",
+            "N28"
+          ]
+        },
+        {
+          "source_line": 57,
+          "source_pair": [
+            16,
+            28
+          ],
+          "model_pair": [
+            "N16",
+            "N28"
+          ]
+        },
+        {
+          "source_line": 58,
+          "source_pair": [
+            17,
+            28
+          ],
+          "model_pair": [
+            "N17",
+            "N28"
+          ]
+        },
+        {
+          "source_line": 59,
+          "source_pair": [
+            18,
+            28
+          ],
+          "model_pair": [
+            "N18",
+            "N28"
+          ]
+        },
+        {
+          "source_line": 60,
+          "source_pair": [
+            19,
+            20
+          ],
+          "model_pair": [
+            "N19",
+            "N20"
+          ]
+        },
+        {
+          "source_line": 61,
+          "source_pair": [
+            20,
+            28
+          ],
+          "model_pair": [
+            "N20",
+            "N28"
+          ]
+        },
+        {
+          "source_line": 62,
+          "source_pair": [
+            21,
+            28
+          ],
+          "model_pair": [
+            "N21",
+            "N28"
+          ]
+        },
+        {
+          "source_line": 63,
+          "source_pair": [
+            22,
+            28
+          ],
+          "model_pair": [
+            "N22",
+            "N28"
+          ]
+        },
+        {
+          "source_line": 64,
+          "source_pair": [
+            23,
+            28
+          ],
+          "model_pair": [
+            "N23",
+            "N28"
+          ]
+        },
+        {
+          "source_line": 65,
+          "source_pair": [
+            24,
+            25
+          ],
+          "model_pair": [
+            "N24",
+            "N25"
+          ]
+        },
+        {
+          "source_line": 66,
+          "source_pair": [
+            25,
+            28
+          ],
+          "model_pair": [
+            "N25",
+            "N28"
+          ]
+        },
+        {
+          "source_line": 67,
+          "source_pair": [
+            26,
+            27
+          ],
+          "model_pair": [
+            "N26",
+            "N27"
+          ]
+        },
+        {
+          "source_line": 68,
+          "source_pair": [
+            27,
+            28
+          ],
+          "model_pair": [
+            "N27",
+            "N28"
+          ]
+        }
+      ]
+    }
+  },
+  "smart_factory": {
+    "source": {
+      "creator": "Ronny Seiger",
+      "title": "Dataset from a Smart Factory to evaluate a Semi-automated Approach to Detecting Process-Level Activities from Sensor Data",
+      "doi": "10.5281/zenodo.14441997",
+      "url": "https://zenodo.org/records/14441997",
+      "publication_date": "2024-12-13",
+      "license": "CC-BY-4.0",
+      "files": [
+        {
+          "path": "sources/zenodo_14441997/camunda-activity.json",
+          "sha256": "4b076db16761a0ccc300b150afe2284bf57e8f8afd68fe2e3b130c6b6eaed154",
+          "download_url": "https://zenodo.org/records/14441997/files/camunda-activity.json?download=1"
+        },
+        {
+          "path": "sources/zenodo_14441997/camunda-process.json",
+          "sha256": "e0c59de80c667baaa001fd44a1494874338dd5375f5b3db69040b53b3fc6cb07",
+          "download_url": "https://zenodo.org/records/14441997/files/camunda-process.json?download=1"
+        },
+        {
+          "path": "sources/zenodo_14441997/production_process.bpmn",
+          "sha256": "cb68fc08e5f22d7fcf39f9eae36372b2572d75a590dad33891d31881781491f7",
+          "download_url": "https://zenodo.org/records/14441997/files/production_process.bpmn?download=1"
+        }
+      ]
+    },
+    "selection": {
+      "processDefinitionKey": "production_process_new3",
+      "processDefinitionVersion": 2,
+      "start_local_date": "2023-04-11",
+      "state": "COMPLETED",
+      "activityType": "serviceTask",
+      "processDefinitionId": "production_process_new3:2:912e1f83-c3fb-11ed-9ece-2a1b4c3d6e5f"
+    },
+    "assumptions": {
+      "observed": "BPM activity elapsed time, durationInMillis / 1000; includes command/network/control overhead, not isolated machining time.",
+      "graph": "Ten automatic service tasks and their nine direct links from production_process.bpmn; manual Enter Color and start/end events excluded.",
+      "grouping": "Group by activityId, never by name; two Calibrate VGR activities are distinct.",
+      "filter": {
+        "processDefinitionKey": "production_process_new3",
+        "processDefinitionVersion": 2,
+        "start_local_date": "2023-04-11",
+        "state": "COMPLETED",
+        "activityType": "serviceTask",
+        "processDefinitionId": "production_process_new3:2:912e1f83-c3fb-11ed-9ece-2a1b4c3d6e5f"
+      },
+      "sample_size": "15 observations per activity from one day; no outliers removed.",
+      "capacity": "capacity=1 for each separate task is assumed. Shared robot and machine use between different tasks is not modeled.",
+      "simulation": "Default jobs=1 avoids inter-product resource competition. interval=0 is a single-product placeholder, not an observed arrival interval.",
+      "independence": "Lognormal model draws independently across tasks/products, discarding empirical dependence.",
+      "distribution": "Mean/SD moment matching only; lognormal distribution and stationarity have not been validated. Multimodal short calibration times remain in the data.",
+      "layout": "Generated coordinates, not source factory geometry."
+    },
+    "raw_process_count": 176,
+    "raw_activity_count": 1727,
+    "process_key_count": 45,
+    "selected_process_count": 15,
+    "selected_all_activity_count": 195,
+    "selected_service_task_count": 150,
+    "excluded_selected_activity_types": {
+      "userTask": 15,
+      "noneEndEvent": 15,
+      "startEvent": 15
+    },
+    "selected_cases_nonoverlapping": true,
+    "duration_matches_timestamp": true,
+    "precedence_violations": 0,
+    "stats": [
+      {
+        "model_node": "P01",
+        "activity_id": "Activity_0aprosy",
+        "name_source": "Calibrate HBW",
+        "name_ja": "HBWの原点調整",
+        "n": 15,
+        "mean_seconds": 11.365733333333333,
+        "sample_sd_seconds": 3.410246439914919,
+        "min_seconds": 5.953,
+        "median_seconds": 9.896,
+        "max_seconds": 16.442,
+        "coefficient_of_variation": 0.30004631816526744
+      },
+      {
+        "model_node": "P02",
+        "activity_id": "Activity_0cr4src",
+        "name_source": "Calibrate VGR",
+        "name_ja": "VGRの原点調整（前半）",
+        "n": 15,
+        "mean_seconds": 1.0122,
+        "sample_sd_seconds": 0.8499560660914859,
+        "min_seconds": 0.005,
+        "median_seconds": 1.65,
+        "max_seconds": 1.764,
+        "coefficient_of_variation": 0.8397115847574451
+      },
+      {
+        "model_node": "P03",
+        "activity_id": "Activity_1lx6ugd",
+        "name_source": "Unload from HBW",
+        "name_ja": "HBWから取り出す",
+        "n": 15,
+        "mean_seconds": 50.33233333333333,
+        "sample_sd_seconds": 6.258984829446233,
+        "min_seconds": 40.508,
+        "median_seconds": 48.965,
+        "max_seconds": 56.962,
+        "coefficient_of_variation": 0.1243531625683868
+      },
+      {
+        "model_node": "P04",
+        "activity_id": "Activity_107pam0",
+        "name_source": "Pickup and transport to Oven",
+        "name_ja": "炉まで運ぶ",
+        "n": 15,
+        "mean_seconds": 32.46353333333333,
+        "sample_sd_seconds": 0.1609631131953019,
+        "min_seconds": 32.177,
+        "median_seconds": 32.464,
+        "max_seconds": 32.907,
+        "coefficient_of_variation": 0.004958274613627042
+      },
+      {
+        "model_node": "P05",
+        "activity_id": "Activity_0jtoxii",
+        "name_source": "Calibrate VGR",
+        "name_ja": "VGRの原点調整（後半）",
+        "n": 15,
+        "mean_seconds": 5.763733333333334,
+        "sample_sd_seconds": 0.024437870688943424,
+        "min_seconds": 5.719,
+        "median_seconds": 5.755,
+        "max_seconds": 5.804,
+        "coefficient_of_variation": 0.004239937775679552
+      },
+      {
+        "model_node": "P06",
+        "activity_id": "Activity_1e6xoye",
+        "name_source": "OV Burn",
+        "name_ja": "炉で処理する",
+        "n": 15,
+        "mean_seconds": 27.667133333333332,
+        "sample_sd_seconds": 0.0967019475846621,
+        "min_seconds": 27.538,
+        "median_seconds": 27.663,
+        "max_seconds": 27.888,
+        "coefficient_of_variation": 0.003495192162469384
+      },
+      {
+        "model_node": "P07",
+        "activity_id": "Activity_075b7q0",
+        "name_source": "WT Transport",
+        "name_ja": "WTで運ぶ",
+        "n": 15,
+        "mean_seconds": 32.610533333333336,
+        "sample_sd_seconds": 0.9977116579357752,
+        "min_seconds": 31.746,
+        "median_seconds": 31.961,
+        "max_seconds": 34.107,
+        "coefficient_of_variation": 0.03059476665829165
+      },
+      {
+        "model_node": "P08",
+        "activity_id": "Activity_0kh9pn6",
+        "name_source": "Start Milling Machine",
+        "name_ja": "フライス盤を動かす",
+        "n": 15,
+        "mean_seconds": 11.053333333333333,
+        "sample_sd_seconds": 0.10249645754621875,
+        "min_seconds": 10.942,
+        "median_seconds": 11.027,
+        "max_seconds": 11.352,
+        "coefficient_of_variation": 0.009272900260514362
+      },
+      {
+        "model_node": "P09",
+        "activity_id": "Activity_147au71",
+        "name_source": "Sorting Machine sort",
+        "name_ja": "仕分ける",
+        "n": 15,
+        "mean_seconds": 28.917066666666667,
+        "sample_sd_seconds": 9.400598685088905,
+        "min_seconds": 19.352,
+        "median_seconds": 26.819,
+        "max_seconds": 47.865,
+        "coefficient_of_variation": 0.32508825301859473
+      },
+      {
+        "model_node": "P10",
+        "activity_id": "Activity_0cwptph",
+        "name_source": "Pickup and transport to sink",
+        "name_ja": "排出口まで運ぶ",
+        "n": 15,
+        "mean_seconds": 36.97366666666667,
+        "sample_sd_seconds": 0.7627978263009954,
+        "min_seconds": 36.054,
+        "median_seconds": 36.696,
+        "max_seconds": 38.622,
+        "coefficient_of_variation": 0.020630840678527836
+      }
+    ],
+    "direct_bpmn_edges": [
+      {
+        "source_activity": "Activity_0aprosy",
+        "target_activity": "Activity_0cr4src",
+        "model_src": "P01",
+        "model_dst": "P02"
+      },
+      {
+        "source_activity": "Activity_0cr4src",
+        "target_activity": "Activity_1lx6ugd",
+        "model_src": "P02",
+        "model_dst": "P03"
+      },
+      {
+        "source_activity": "Activity_1lx6ugd",
+        "target_activity": "Activity_107pam0",
+        "model_src": "P03",
+        "model_dst": "P04"
+      },
+      {
+        "source_activity": "Activity_107pam0",
+        "target_activity": "Activity_0jtoxii",
+        "model_src": "P04",
+        "model_dst": "P05"
+      },
+      {
+        "source_activity": "Activity_0jtoxii",
+        "target_activity": "Activity_1e6xoye",
+        "model_src": "P05",
+        "model_dst": "P06"
+      },
+      {
+        "source_activity": "Activity_1e6xoye",
+        "target_activity": "Activity_075b7q0",
+        "model_src": "P06",
+        "model_dst": "P07"
+      },
+      {
+        "source_activity": "Activity_075b7q0",
+        "target_activity": "Activity_0kh9pn6",
+        "model_src": "P07",
+        "model_dst": "P08"
+      },
+      {
+        "source_activity": "Activity_0kh9pn6",
+        "target_activity": "Activity_147au71",
+        "model_src": "P08",
+        "model_dst": "P09"
+      },
+      {
+        "source_activity": "Activity_147au71",
+        "target_activity": "Activity_0cwptph",
+        "model_src": "P09",
+        "model_dst": "P10"
+      }
+    ],
+    "mean_automatic_duration_sum_seconds": 238.15926666666667,
+    "mean_automatic_span_seconds": 238.19653333333332,
+    "automatic_total_sample_sd_seconds": 12.052944414816933,
+    "independent_model_total_sd_seconds": 11.896302157753537,
+    "between_task_gap_min_seconds": 0.020000000000010232,
+    "between_task_gap_max_seconds": 0.07499999999998863
+  }
+}

@@ -1,5 +1,5 @@
-% Standalone LuaLaTeX source; all diagrams and chart data are embedded.
-% Compile twice: lualatex line_lab_guide.tex
+% LuaLaTeX source; diagrams and data are embedded; myfont-setting.sty is required.
+% Compile twice: lualatex easy-guide.tex
 \documentclass[a4paper,11pt]{ltjsarticle}
 \usepackage{myfont-setting}
 \setmainjfont[BoldFont=HaranoAjiGothic-Bold.otf]{HaranoAjiMincho-Regular.otf}
@@ -1015,13 +1015,15 @@ JSON保存に失敗 & 不正な分布値や数値、保存先権限を確認す�
 \section{このLuaLaTeX文書をPDFにする}
 この\code{.tex}には図の形と数値を直接埋め込んだため、図の外部ファイルは不要である。
 LuaLaTeX、LuaTeX-ja、原ノ味フォント、PGFPlots等を含むTeX Live環境でコンパイルする。
+同じフォルダの\code{myfont-setting.sty}も必要である。指定フォントが見つからない場合は、
+Latin Modernと原ノ味フォントへ切り替える。
 Ubuntuでは、必要に応じて\code{texlive-luatex}、\code{texlive-lang-japanese}、
 \code{texlive-latex-extra}、\code{texlive-pictures}等を導入する。
 \par\noindent\begin{minipage}{\linewidth}
 \begin{lstlisting}
 cd docs
-lualatex -interaction=nonstopmode -halt-on-error line_lab_guide.tex
-lualatex -interaction=nonstopmode -halt-on-error line_lab_guide.tex
+lualatex -interaction=nonstopmode -halt-on-error easy-guide.tex
+lualatex -interaction=nonstopmode -halt-on-error easy-guide.tex
 \end{lstlisting}
 \end{minipage}\par
 2回処理するのは目次・参照番号を確定するためである。

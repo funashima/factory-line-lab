@@ -1,0 +1,266 @@
+{
+  "meta": {
+    "version": 2,
+    "program": "1.0.0",
+    "semantics": "AND-fork-join/FCFS/unlimited-buffer",
+    "title": "JACKSON / original deterministic task data",
+    "time_unit": "unspecified_benchmark_time_unit",
+    "data_kind": "published_benchmark_not_event_log",
+    "retrieved_on": "2026-09-23",
+    "sources": [
+      {
+        "title": "Scholl (1993), Data of Assembly Line Balancing Problems",
+        "landing_url": "https://assembly-line-balancing.de/salbp/benchmark-data-sets-1993/",
+        "download_url": "https://assembly-line-balancing.de/wp-content/uploads/2017/01/SALBP-data-sets.zip",
+        "archive_member": "precedence graphs/JACKSON.IN2",
+        "local_path": "sources/scholl1993/JACKSON.IN2",
+        "sha256": "70eaccc7b34dc4e65649888695e4cef4039e0dd810ad3a9c9b867718093de4ac"
+      }
+    ],
+    "assumptions": {
+      "source_facts": "Task times and every listed precedence pair are unchanged.",
+      "time_unit": "Not specified in IN2; abstract benchmark units, not assumed seconds.",
+      "resource_capacity": "One dedicated resource per task is an added modeling assumption, not a source observation.",
+      "source_problem": "SALBP assigns tasks to shared work stations; this simulator does not solve that assignment problem.",
+      "variability": "No repeated measurements or standard deviations supplied; use constant, p2=0.",
+      "configuration": "60 products, interval 1 and 10% improvement are chosen experiment conditions, not measurements.",
+      "layout": "Generated display coordinates; not a physical factory floor plan.",
+      "other": "Unlimited buffers, no transport delay, FCFS, all tasks once per product."
+    },
+    "provenance_warning": "GUI re-save drops extra source metadata; retain provenance.json and the original model."
+  },
+  "nodes": [
+    {
+      "id": "N01",
+      "name": "JACKSON task 1",
+      "service": {
+        "dist": "constant",
+        "p1": 6,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N02",
+      "name": "JACKSON task 2",
+      "service": {
+        "dist": "constant",
+        "p1": 2,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N03",
+      "name": "JACKSON task 3",
+      "service": {
+        "dist": "constant",
+        "p1": 5,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N04",
+      "name": "JACKSON task 4",
+      "service": {
+        "dist": "constant",
+        "p1": 7,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N05",
+      "name": "JACKSON task 5",
+      "service": {
+        "dist": "constant",
+        "p1": 1,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N06",
+      "name": "JACKSON task 6",
+      "service": {
+        "dist": "constant",
+        "p1": 2,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N07",
+      "name": "JACKSON task 7",
+      "service": {
+        "dist": "constant",
+        "p1": 3,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N08",
+      "name": "JACKSON task 8",
+      "service": {
+        "dist": "constant",
+        "p1": 6,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N09",
+      "name": "JACKSON task 9",
+      "service": {
+        "dist": "constant",
+        "p1": 5,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N10",
+      "name": "JACKSON task 10",
+      "service": {
+        "dist": "constant",
+        "p1": 5,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N11",
+      "name": "JACKSON task 11",
+      "service": {
+        "dist": "constant",
+        "p1": 4,
+        "p2": 0
+      },
+      "capacity": 1
+    }
+  ],
+  "edges": [
+    {
+      "id": "E001",
+      "src": "N01",
+      "dst": "N02"
+    },
+    {
+      "id": "E002",
+      "src": "N01",
+      "dst": "N03"
+    },
+    {
+      "id": "E003",
+      "src": "N01",
+      "dst": "N04"
+    },
+    {
+      "id": "E004",
+      "src": "N01",
+      "dst": "N05"
+    },
+    {
+      "id": "E005",
+      "src": "N02",
+      "dst": "N06"
+    },
+    {
+      "id": "E006",
+      "src": "N03",
+      "dst": "N07"
+    },
+    {
+      "id": "E007",
+      "src": "N04",
+      "dst": "N07"
+    },
+    {
+      "id": "E008",
+      "src": "N05",
+      "dst": "N07"
+    },
+    {
+      "id": "E009",
+      "src": "N06",
+      "dst": "N08"
+    },
+    {
+      "id": "E010",
+      "src": "N07",
+      "dst": "N09"
+    },
+    {
+      "id": "E011",
+      "src": "N08",
+      "dst": "N10"
+    },
+    {
+      "id": "E012",
+      "src": "N09",
+      "dst": "N11"
+    },
+    {
+      "id": "E013",
+      "src": "N10",
+      "dst": "N11"
+    }
+  ],
+  "layout": {
+    "N01": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "N02": {
+      "x": 235.0,
+      "y": 0.0
+    },
+    "N03": {
+      "x": 235.0,
+      "y": 110.0
+    },
+    "N04": {
+      "x": 235.0,
+      "y": 220.0
+    },
+    "N05": {
+      "x": 235.0,
+      "y": 330.0
+    },
+    "N06": {
+      "x": 470.0,
+      "y": 0.0
+    },
+    "N07": {
+      "x": 470.0,
+      "y": 110.0
+    },
+    "N08": {
+      "x": 705.0,
+      "y": 0.0
+    },
+    "N09": {
+      "x": 705.0,
+      "y": 110.0
+    },
+    "N10": {
+      "x": 940.0,
+      "y": 0.0
+    },
+    "N11": {
+      "x": 1175.0,
+      "y": 0.0
+    }
+  },
+  "simulation": {
+    "jobs": 60,
+    "runs": 1,
+    "interval": 1.0,
+    "seed": 42,
+    "improvement": 0.1,
+    "sensitivity": true,
+    "all_traces": false
+  }
+}

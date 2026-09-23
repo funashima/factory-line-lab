@@ -1,0 +1,536 @@
+% LuaLaTeX document; myfont-setting.sty is required. Compile twice with lualatex.
+% All figures and numerical tables are embedded; no external image is needed.
+\documentclass[a4paper,11pt]{ltjsarticle}
+\usepackage{myfont-setting}
+\usepackage[margin=22mm,top=23mm,bottom=24mm]{geometry}
+\usepackage{amsmath,booktabs,longtable,array,tabularx,xcolor,tikz}
+\usetikzlibrary{arrows.meta,positioning}
+\usepackage{listings,enumitem,fancyhdr,tcolorbox,needspace}
+\usepackage[unicode,hidelinks]{hyperref}
+\definecolor{navy}{HTML}{254B63}
+\definecolor{blue}{HTML}{447D9F}
+\definecolor{pale}{HTML}{F1F6F8}
+\definecolor{orange}{HTML}{CF8153}
+\setlength{\parskip}{.38em}
+\setlength{\parindent}{0pt}
+\setlength{\emergencystretch}{3em}
+\renewcommand{\arraystretch}{1.22}
+\setlist{itemsep=.18em,topsep=.3em,leftmargin=1.7em}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small\sffamily 生産ライン研究 / 公開データとJSON}
+\fancyhead[R]{\small 2026-09-21}
+\fancyfoot[C]{\thepage}\setlength{\headheight}{16pt}
+\lstset{basicstyle=\ttfamily\small,columns=fullflexible,keepspaces=true,
+ breaklines=true,showstringspaces=false,frame=single,rulecolor=\color{blue!35},
+ backgroundcolor=\color{pale},aboveskip=.6em,belowskip=.6em}
+\DeclareRobustCommand{\code}[1]{\texttt{\detokenize{#1}}}
+\pdfstringdefDisableCommands{\def\code#1{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newtcolorbox{pointbox}[1]{colback=pale,colframe=blue!70!black,title=#1,
+ fonttitle=\bfseries,boxrule=.6pt,arc=1mm,left=2mm,right=2mm,top=1mm,bottom=1mm}
+\tikzset{task/.style={draw=blue,fill=pale,rounded corners=2pt,
+ minimum width=17mm,minimum height=9mm,align=center,font=\small},
+ flow/.style={-{Stealth[length=2mm]},thick,draw=navy}}
+\title{\sffamily\bfseries 生産ライン研究に使う公開データ\\\Large 原典・取得内容・JSONへの変換と限界}
+\author{Hiroki Funashima}
+\date{取得・作成日：2026年9月21日}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\section{何を取得し、何に使えるか}
+今回、\textbf{分岐・合流のある標準問題3件}と、\textbf{小型実験工場で記録された生産ログ1件}を取得した。
+これらから、既存の\code{mock_line_editor.py}で開けるJSONを5個作成した。
+出典だけを紹介するのではなく、原ファイル、変換プログラム、抽出した観測値、検証結果も同梱している。
+
+\begin{tabularx}{\linewidth}{P{28mm}P{17mm}YY}
+\toprule データ & 作業数 & 分かること & 研究での役割\\\midrule
+JACKSON & 11 & 作業時間・先行関係 & 小規模な分岐・合流の確認\\
+MITCHELL & 21 & 作業時間・先行関係 & 20工程程度での比較\\
+HESKIA & 28 & 作業時間・先行関係 & 計画の上限に近い規模の比較\\
+St.Gallen実験工場 & 10 & 15生産分の作業経過時間 & 平均・ばらつきの推定\\
+\bottomrule
+\end{tabularx}
+
+標準問題はSchollの公開配布データ\cite{scholl}、実験工場ログはデータ作成者Ronny SeigerによるZenodo公開記録\cite{zenodo}から取得した。
+標準問題の「11作業」は、工場に設備が11台あるという意味ではない。作業と設備を区別することが、この資料の重要な点である。
+
+\begin{pointbox}{結論を先に}
+標準問題は、工程のつながりを変えた計算実験に使える。
+実験工場ログは、実際に記録された時間からモデルの値を作る練習に使える。
+ただし、今回のデータだけで\textbf{実工場のボトルネック検出精度や生産能力を証明することはできない}。
+\end{pointbox}
+
+本書では、原データに書かれた\textbf{事実}、集計して求めた\textbf{統計量}、
+計算のために追加した\textbf{仮定}を区別する。
+「15回の平均が50.332秒だった」と「今後も対数正規分布に従う」は別の主張である。
+
+\clearpage
+\section{原典と、実際に取得したファイル}
+\subsection{標準問題：Schollの配布データ}
+配布元は、Armin Schollが提供するAssembly Line Balancingのサイトである\cite{scholl}。
+ZIP内の説明ファイルには、元の資料として次の書誌情報がある。
+
+\begin{quote}
+Armin Scholl (1993), \emph{Data of Assembly Line Balancing Problems},
+Schriften zur Quantitativen Betriebswirtschaftslehre 16/93, TH Darmstadt.
+\end{quote}
+
+\noindent 配布ページ：\url{https://assembly-line-balancing.de/salbp/benchmark-data-sets-1993/}
+
+ZIPの\code{precedence graphs/}から、\code{JACKSON.IN2}、\code{MITCHELL.IN2}、
+\code{HESKIA.IN2}、\code{README.DOC}を取り出した。
+同梱の\code{README.DOC}は名前に反して平文であり、古いIN2形式の読み方を説明している。
+本書の出典はこの配布データである。各問題名に対応する歴史的な初出論文を独自に再現した、という意味ではない。
+
+\subsection{実測記録：St.Gallen大学の小型実験工場}
+Ronny Seigerが2024年12月13日に公開したデータセットである\cite{zenodo}。
+対象はFischertechnik Industry 9.0Vの\textbf{物理的な小型実験工場}であり、商用の大規模工場とは規模が異なる。
+関連論文は、センサーデータから作業を検出する研究\cite{paper}であり、ボトルネックの正解ラベルを提供する研究ではない。
+
+\noindent DOI：\url{https://doi.org/10.5281/zenodo.14441997}
+
+\begin{tabularx}{\linewidth}{P{57mm}Y}
+\toprule 取得ファイル & 使用内容\\\midrule
+\code{camunda-process.json} & 生産の開始・終了、工程定義の版、完了状態\\
+\code{camunda-activity.json} & 各作業の開始・終了、経過時間、作業ID\\
+\code{production_process.bpmn} & 生産工程の正式な順序\\
+公開レコードのAPIメタデータ & DOI、著者、公開日、利用条件、ファイル照合値\\
+\bottomrule
+\end{tabularx}
+
+BPMNとは、仕事の順序を図とXMLで表す形式である。今回は名前や時刻順から工程を推測せず、この工程定義を読んだ。
+公開レコードの説明中のファイル名と実際のダウンロード名には違いがあるため、上表は\textbf{実際の取得名}である。
+10 Hzのセンサーログ2件は、今回の作業時間抽出には不要なので取得していない。
+
+\clearpage
+\section{標準問題をどうJSONへ変えたか}
+\subsection{原ファイルの読み方}
+IN2では、1行目が作業数$n$、続く$n$行が各作業の時間、その後の\code{i,j}が「作業$i$が終わってから$j$を始める」という関係である。
+末尾の\code{-1,-1}は終了印であり、工程として取り込まない。
+作業時間と全接続をそのままJSONへ転記した。
+
+\begin{tabular}{lrrrrr}
+\toprule 問題 & 作業数 & 接続数 & 時間の合計 & 最長作業 & 1製品の最短時間$^*$\\\midrule
+JACKSON & 11 & 13 & 46 & 7 & 25\\
+MITCHELL & 21 & 27 & 105 & 13 & 74\\
+HESKIA & 28 & 39 & 1024 & 108 & 467\\
+\bottomrule
+\end{tabular}
+
+{\small $^*$各作業に専用設備を1台ずつ与えた今回のモデルでの値。全値は原ファイルからの自作集計。
+時間単位はIN2に明記されていないため、秒や分とは決めない。}
+
+\subsection{JACKSONの接続を実際に見る}
+次の図は取得した13接続をそのまま描いたものである。節点の「番号：時間」は、原ファイルの作業番号と時間を表す。
+
+\begin{center}
+\begin{tikzpicture}[x=1.05cm,y=1.18cm]
+\node[task] (1) at (0,0) {1：6};
+\node[task] (2) at (-3,-1) {2：2};
+\node[task] (3) at (-1,-1) {3：5};
+\node[task] (4) at (1,-1) {4：7};
+\node[task] (5) at (3,-1) {5：1};
+\node[task] (6) at (-3,-2) {6：2};
+\node[task] (7) at (1,-2) {7：3};
+\node[task] (8) at (-3,-3) {8：6};
+\node[task] (9) at (1,-3) {9：5};
+\node[task] (10) at (-3,-4) {10：5};
+\node[task] (11) at (0,-5) {11：4};
+\foreach \a/\b in {1/2,1/3,1/4,1/5,2/6,3/7,4/7,5/7,6/8,7/9,8/10,9/11,10/11}
+ \draw[flow] (\a) -- (\b);
+\end{tikzpicture}
+\end{center}
+
+例えば作業7は、作業3・4・5の\textbf{すべて}が終わるまで開始できない。
+長い経路は$1\to4\to7\to9\to11$で、時間は$6+7+3+5+4=25$となる。
+このように最も時間のかかる経路を「クリティカルパス」と呼ぶ。
+
+\clearpage
+\section{標準問題に追加した仮定}
+元のSALBPは、複数の作業をいくつかの作業台へ割り当てる問題である\cite{salbp}。
+例えば「ねじを締める」と「目視確認」を同じ人が行うこともある。
+一方、既存プログラムでは、JSONの各工程に独立した設備を与える。
+この違いを隠すと、元の研究と違う問題を解いていることに気づけなくなる。
+
+\begin{tabularx}{\linewidth}{P{34mm}YY}
+\toprule 項目 & 原データから採用 & 今回追加したこと\\\midrule
+作業番号・時間 & そのまま使用 & 名前を表示用に付加\\
+先行関係 & 全接続をそのまま使用 & AND合流として実行\\
+時間のばらつき & 反復測定値はない & 定数分布、\code{p2=0}\\
+設備台数 & 作業ごとの実設備数は不明 & 各作業に専用設備1台\\
+作業台への割当 & 元の問題で決める対象 & 割当の最適化は行わない\\
+投入間隔・生産数 & 実測値はない & 間隔1、60製品を既定値にする\\
+画面上の位置 & 実配置はない & 見やすい座標を自動作成\\
+待ち場所・運搬 & 今回の原ファイルにはない & 無限バッファ、運搬時間0\\
+\bottomrule
+\end{tabularx}
+
+定数分布とは「毎回同じ時間になる」という設定である。
+標準偏差を0にしたのは、実際の工場にばらつきがないと主張するためではなく、
+\textbf{元データに書かれていないばらつきを作らないため}である。
+
+\begin{pointbox}{このデータで言ってよいこと}
+「公表された作業時間と先行関係を使い、各作業に専用設備を与えた仮想ラインで、
+待ち時間や改善効果を比較した」と説明できる。
+「SALBPの最適解を求めた」「実工場の性能を再現した」とは説明できない。
+\end{pointbox}
+
+確率的な実験を加える場合には、例えば平均は原値のまま、標準偏差を平均の15\%とする条件を\textbf{別ファイル}で作る。
+この15\%は研究者が設定した条件であり、測定から求めた数値ではない。
+今回の3ファイルには、そのような人工的なばらつきを混ぜていない。
+
+\clearpage
+\section{実験工場ログから何を抽出したか}
+\subsection{混在した記録を、そのまま平均しない}
+取得したログには、2022年から2023年にかけての異なる工程版や、請求書処理など別の業務も含まれていた。
+すべてを一緒に平均すると、「何の作業時間か」が不明になる。
+そこで、次の条件を\textbf{すべて満たす生産}を選んだ。
+
+\begin{tabularx}{\linewidth}{P{42mm}Y}
+\toprule 条件 & 採用値\\\midrule
+工程定義キー & \code{production_process_new3}\\
+工程定義の版 & 2（定義IDも完全一致を確認）\\
+開始日 & 元タイムゾーンで2023年4月11日\\
+状態 & \code{COMPLETED}、終了時刻あり\\
+作業種別 & \code{serviceTask}、取消なし、正の経過時間\\
+\bottomrule
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{P{76mm}rY}
+\toprule 段階 & 件数 & 意味\\\midrule
+原ファイル内の生産・業務インスタンス & 176 & すべての工程定義を含む\\
+対象キーのインスタンス & 45 & 日付や版が異なるものを含む\\
+選択条件に合う完了生産 & 15 & 今回の分析対象\\
+その15生産に属する全作業・イベント & 195 & 各生産13件\\
+自動作業だけを抽出 & 150 & 各生産10作業\\
+\bottomrule
+\end{tabularx}
+
+除外した45件は、色を入力する人の操作15件、開始イベント15件、終了イベント15件である。
+原作業ファイル全体は1727件だが、その全体を加工時間の標本にはしていない。
+
+\subsection{時間と順序の確認}
+経過時間は\code{durationInMillis}を1000で割り、秒へ直した。
+150件すべてについて、終了時刻から開始時刻を引いた値と一致することを確認した。
+各生産に10作業が1回ずつあり、BPMNに記された前後関係にも違反がなかった。
+
+同じ名前の「Calibrate VGR」が2か所あるため、\textbf{作業名ではなく作業ID}で区別した。
+小さな値も含め、外れ値の削除や時間の切上げは行っていない。
+開始・終了時刻、元の記録ID、JSON配列内の位置も保存し、後から値を追跡できるようにした。
+
+\clearpage
+\section{実測から得た10工程の値}
+次の順番はBPMNの自動作業10件をたどったものである。今回は一本道であり、分岐・合流はない。
+日本語名は本資料で付けた表示用の訳で、原名と元の作業IDは付録・JSONに残している。
+数値は取得ログからの自作集計であり、論文に掲載された表を転記したものではない。
+
+\begin{tabularx}{\linewidth}{P{10mm}Yrrrr}
+\toprule ID & 作業 & 平均 & 標準偏差 & 最小 & 最大\\\midrule
+P01 & HBWの原点調整 & 11.366 & 3.410 & 5.953 & 16.442\\
+P02 & VGRの原点調整（前半） & 1.012 & 0.850 & 0.005 & 1.764\\
+P03 & HBWから取り出す & 50.332 & 6.259 & 40.508 & 56.962\\
+P04 & 炉まで運ぶ & 32.464 & 0.161 & 32.177 & 32.907\\
+P05 & VGRの原点調整（後半） & 5.764 & 0.024 & 5.719 & 5.804\\
+P06 & 炉で処理する & 27.667 & 0.097 & 27.538 & 27.888\\
+P07 & WTで運ぶ & 32.611 & 0.998 & 31.746 & 34.107\\
+P08 & フライス盤を動かす & 11.053 & 0.102 & 10.942 & 11.352\\
+P09 & 仕分ける & 28.917 & 9.401 & 19.352 & 47.865\\
+P10 & 排出口まで運ぶ & 36.974 & 0.763 & 36.054 & 38.622\\
+\bottomrule
+\end{tabularx}
+
+\noindent 単位は秒。全工程で$n=15$。標準偏差は分母を$n-1$とする標本標準偏差である。
+表示は小数第3位までだが、JSONには集計時の精度を保持した。
+HBW、VGR、WTは原記録の機器略称を残している。
+
+\subsection{高校の数学で読める平均とばらつき}
+15回の時間を$x_1,\ldots,x_{15}$とすると、平均と標本標準偏差は次のように求める。
+\[
+\bar{x}=\frac{1}{15}\sum_{i=1}^{15}x_i,
+\qquad
+s=\sqrt{\frac{1}{14}\sum_{i=1}^{15}(x_i-\bar{x})^2}.
+\]
+平均は「全部を同じ時間に均したときの値」で、標準偏差は「値の散らばりの大きさ」を表す。
+標準偏差は平均の誤差幅そのものではない。
+
+平均が最長なのはP03、秒単位の標準偏差が最大なのはP09である。
+しかし、この順位だけで、実工場の生産量を制限するボトルネックを断定することはできない。
+
+\begin{pointbox}{短い記録を勝手に直さない}
+P02には0.005--0.011秒の記録が6件、1.643--1.764秒の記録が9件あった。
+一つの山を持つ滑らかな分布に見えるとは限らない。
+装置の状態で作業が省略された可能性などを調べる余地があるが、原因はこの集計だけでは分からない。
+\end{pointbox}
+
+\clearpage
+\section{実測由来のJSONを2種類にした理由}
+\subsection{まず使う定数版}
+\code{smart_factory_10_mean.json}は、各工程の時間を標本平均で固定する。
+1製品を計算すると、10工程の合計は\textbf{238.159秒}になる。
+これは15生産それぞれの自動作業時間を足し、その合計を平均した値と一致する。
+
+一方、最初の自動作業の開始から最後の自動作業の終了までの実測平均は238.197秒である。
+作業間に0.020--0.075秒の小さな隙間があるため、単純な時間の合計とは少し異なる。
+色を入力する人の作業は、どちらの自動作業時間にも含めていない。
+
+\subsection{確率的な計算を試す近似版}
+\code{smart_factory_10_lognormal.json}は、標本平均と標本標準偏差を、
+対数正規分布の平均・標準偏差として渡す。
+対数正規分布は、正の時間を出せる分布の一つである。
+ただし、\textbf{この分布が観測値に適していると検証したわけではない}。
+
+\begin{lstlisting}
+{
+  "id": "P03",
+  "name": "HBWから取り出す",
+  "service": {
+    "dist": "lognormal",
+    "p1": 50.33233333333333,
+    "p2": 6.258984829446233
+  },
+  "capacity": 1
+}
+\end{lstlisting}
+{\small 配布JSONのP03を抜粋。標準偏差も秒単位である。}
+
+既存プログラムの\code{p1}と\code{p2}は、\textbf{元の秒単位の平均と標準偏差}であり、対数を取った後の値ではない。
+内部では$m=\code{p1}$、$s=\code{p2}$から、
+\[
+\sigma_{\log}=\sqrt{\log\{1+(s/m)^2\}},\qquad
+\mu_{\log}=\log m-\frac{\sigma_{\log}^2}{2}
+\]
+へ変換している。
+
+各工程を独立に乱数で作るため、同じ生産内で時間が一緒に増減する関係は再現しない。
+元の関係を失わないように、\code{smart_factory_observations.json}には\textbf{生産ごとに10作業をまとめた観測値}も保存した。
+この観測値ファイルはGUI入力ではなく、将来の分布推定や実測の再解析に使う資料である。
+
+\clearpage
+\section{既存プログラムで開く方法と編集時の注意}
+\subsection{入力ファイルと既定条件}
+\begin{tabularx}{\linewidth}{Yrrr}
+\toprule \code{json/}内のファイル & 製品数 & 試行回数 & 投入間隔\\\midrule
+\code{jackson_11.json} & 60 & 1 & 1\\
+\code{mitchell_21.json} & 60 & 1 & 1\\
+\code{heskia_28.json} & 60 & 1 & 1\\
+\code{smart_factory_10_mean.json} & 1 & 1 & 0\\
+\code{smart_factory_10_lognormal.json} & 1 & 50 & 0\\
+\bottomrule
+\end{tabularx}
+
+全モデルでseedは42、改善率は10\%である。
+これらは試行を始めるための\textbf{追加設定}で、原典の実験条件を再現したものではない。
+実測由来の2モデルの投入間隔0は、1製品しか投入しない場合の便宜的な値である。
+標準問題の1は原単位、実測由来モデルは秒であり、混同しない。
+
+GUIを起動し、「JSONを開く」から上表のいずれかを選ぶ。
+工程や接続を編集した後は、新しい名前で保存する。
+CLIでも同じJSONを読み込める。
+
+\begin{lstlisting}
+python ../mock_line_editor.py run \
+  --model json/smart_factory_10_mean.json \
+  --out my_results/smart_mean
+\end{lstlisting}
+データフォルダから実行し、本体の場所に合わせてパスを変える。出力先は空にする。
+
+\subsection{JSONのどの部分を使っているか}
+\begin{tabularx}{\linewidth}{P{32mm}Y}
+\toprule キー & 内容\\\midrule
+\code{meta.version} & 既存プログラムの形式バージョン2\\
+\code{nodes} & 工程ID、表示名、時間分布、設備台数\\
+\code{edges} & 前工程\code{src}から後工程\code{dst}への接続\\
+\code{layout} & 自動作成した画面上の座標\\
+\code{simulation} & 製品数、試行回数、投入間隔、seed、改善率\\
+\code{meta.sources} & 本パッケージで追加した出典・仮定\\
+\bottomrule
+\end{tabularx}
+
+\begin{pointbox}{出典を失わずに工程変更を記録する}
+GUIの再保存では出典情報が残らない。配布JSONと\code{provenance.json}を原本として保持し、変更版は別名で保存する。変更日・変更値・理由も別に記録する。
+\end{pointbox}
+
+\clearpage
+\section{実際に行った検証と、その意味}
+原ファイルの一致、工程の対応、既存プログラムでの計算を確認した。
+結果は\code{validation.json}に保存した。
+
+\begin{tabularx}{\linewidth}{P{48mm}Y}
+\toprule 確認項目 & 結果\\\midrule
+Zenodoファイルの照合 & 取得した3ファイルのMD5が公開メタデータと一致\\
+原ファイルの保持 & SHA256を記録。変換時に改変がないか検査\\
+標準問題の転記 & 3件、計60作業・79接続を転記\\
+実測の抽出 & 15生産・150作業、各生産で10工程が1回ずつ\\
+経過時間 & 150件で時刻差と一致\\
+工程順序 & BPMNとの前後関係違反0件\\
+モデルの互換性 & 5モデルを既存プログラムで読み込み、既定条件で実行\\
+1製品の計算 & 標準問題3件のクリティカルパスと一致\\
+実測値の直接再生 & 15生産すべてで10作業の時間合計と一致\\
+\bottomrule
+\end{tabularx}
+
+\subsection{既定条件での計算例}
+\begin{tabularx}{\linewidth}{YrrP{25mm}}
+\toprule 入力 & 製品数 & 全完了までの時間 & 改善効果が最大の作業\\\midrule
+JACKSON & 60 & 438 & N04\\
+MITCHELL & 60 & 841 & N17\\
+HESKIA & 60 & 6839 & N13\\
+実測由来・定数 & 1 & 238.159秒 & P03\\
+実測由来・対数正規 & 1 & 平均239.190秒 & P03\\
+\bottomrule
+\end{tabularx}
+
+対数正規版のみ50回の平均、ほかは決定的な1回の計算である。
+標準問題3件の時間は原単位であり、実測由来の秒とそのまま比較できない。
+表の順位は\textbf{今回の仮想条件下で時間を10\%短縮したときの順位}である。
+実工場の正解ラベルではない。
+
+1製品が一本道を進むモデルでは、どの工程も合計時間に足される。
+そのため、平均が長い工程を同じ割合で短縮すれば、減る時間も大きくなる。
+この条件でP03が選ばれても、「待ち行列のボトルネックを発見できた」という証明にはならない。
+
+\begin{pointbox}{検証できた範囲}
+今回確かめたのは、\textbf{データを正しく読めることと、変換・計算の整合性}である。
+原ファイルの指紋が一致することは、元の計測の正確さや分布の妥当性まで保証するものではない。
+\end{pointbox}
+
+\clearpage
+\section{研究として、何が言えて何が課題か}
+\subsection{今すぐ使える研究の組み立て方}
+まずJACKSONで分岐・合流の計算を手で追い、MITCHELLとHESKIAへ規模を広げる。
+次に、投入間隔や、特定工程の時間を変更した別JSONを作り、
+「設備待ちが長い工程」と「短縮すると全体が速くなる工程」が一致するかを調べる。
+原値のJSONは残し、同時に複数の条件を変えすぎないことが比較の助けになる。
+
+実測ログについては、まず15生産の時間の範囲や、P02の二つの群を可視化する。
+原ログと対応を確認した後で、定数・対数正規・将来追加する経験分布を比較する。
+経験分布とは、観測した値の中から選び直して時間を作る方法である。
+既存プログラムは経験分布に未対応なので、今回のJSONを与えるだけではその計算はできない。
+
+\subsection{現時点で残る主要な問題}
+\begin{enumerate}
+\item \textbf{実測対象が小さい。}
+小型実験工場の同一日15生産であり、商用工場・他製品・別の日へ一般化できる根拠は不足している。
+\item \textbf{時間の意味が異なる。}
+ログは制御ソフトから見た作業の経過時間である。指令、通信、装置状態による応答などが含まれ得る。
+純粋な加工時間、設備待ち、故障時間を分離して測定した値ではない。
+\item \textbf{設備の共用を表していない。}
+同じロボットや装置に関係する複数作業を、既存プログラムでは別の専用設備として扱う。
+製品を同時に流すと、現実にはできない同時作業を許す可能性がある。
+\item \textbf{投入と待ちの検証ができない。}
+採用した15生産同士は時間的に重なっていなかった。
+ログ全体には貯蔵工程などもあるが、今回のモデルには入れていない。
+これだけでは、混雑したときの設備待ちや処理能力を検証できない。
+\item \textbf{確率分布と独立性が未検証である。}
+P02のような複数の状態が混ざった値を単一分布へ近似すると、特徴を失う。
+平均・標準偏差が一致しても、極端に長い時間や工程間の関係が一致するとは限らない。
+\item \textbf{ボトルネックの正解がない。}
+どの設備を実際に改善すると生産量が増えたかという介入結果は、今回の入力には含まれない。
+正解率を評価するには、条件を決めた仮想実験か、追加の実測・改善実験が必要である。
+\end{enumerate}
+
+\noindent 卒業研究では、これらの限界を明示したうえで、
+\textbf{「公表構造を使う比較実験」と「実測時間を使うモデル化」}の両方を示すと、何を検証したかが明確になる。
+
+\clearpage
+\section{再現手順、利用条件、参考文献}
+\subsection{元データから作り直す}
+\code{convert_sources.py}はPython標準ライブラリだけで動く。
+原ファイルの指紋を確認し、同じ抽出・集計から8個のJSONを生成する。
+5個がGUI入力、3個が観測値・出典・一覧の資料である。
+
+\begin{lstlisting}
+cd research_data_pack
+python convert_sources.py --out rebuilt
+python verify_data.py \
+  --program ../mock_line_editor.py
+lualatex data_sources_guide.tex
+lualatex data_sources_guide.tex
+\end{lstlisting}
+既存の出力を守るため、変換先は空のフォルダを指定する。
+検証用プログラムは同梱したPython本体と、そのコア依存ライブラリを必要とする。
+LuaLaTeX原稿には図と表を内蔵し、別の画像やBibTeXファイルなしで組版できる。
+同じフォルダの\code{myfont-setting.sty}が必要で、指定フォントがなければ
+Latin Modernと原ノ味フォントに切り替える。
+
+\subsection{利用条件も出典と一緒に残す}
+Zenodoの取得メタデータはライセンスを\code{cc-by-4.0}と示している。
+原著者・DOIと、抽出・集計・近似を加えたことを記載して使用する。
+Schollのサイトは独自の条件を掲示しており、自由な再配布を認めるCC BYデータとは扱わない\cite{notice}。
+個人の非商用利用や個人へのコピーに関する条件があり、一般公開・再配布の際には掲載条件を確認する。
+\code{SOURCE_NOTICES.md}にも取得時点の表示と変更内容を残した。
+
+\begingroup\small
+\begin{thebibliography}{9}
+\setlength{\itemsep}{.15em}
+\bibitem{scholl}
+Armin Scholl. \emph{Data of Assembly Line Balancing Problems}. 1993.
+Schriften zur Quantitativen Betriebswirtschaftslehre 16/93, TH Darmstadt.
+書誌情報は配布ZIPのREADMEによる。
+配布元：\url{https://assembly-line-balancing.de/salbp/benchmark-data-sets-1993/}
+（2026-09-23取得）.
+\bibitem{zenodo}
+Ronny Seiger. \emph{Dataset from a Smart Factory to evaluate a Semi-automated Approach to Detecting Process-Level Activities from Sensor Data}. Zenodo, 2024.
+\url{https://doi.org/10.5281/zenodo.14441997}
+（2026-09-23取得）.
+\bibitem{paper}
+Luciano García-Bañuelos, Mauricio Jacobo González González, Ronny Seiger,
+Marco Franceschetti, Alejandra Guadalupe Silva Trujillo.
+\emph{A semi-automated approach to detecting process-level activities from sensor data}.
+Procedia Computer Science 257, 856--863, 2025.
+\url{https://doi.org/10.1016/j.procs.2025.03.110}.
+\bibitem{salbp}
+Assembly Line Balancing. \emph{SALBP: Problem statement}.
+\url{https://assembly-line-balancing.de/salbp/}（2026-09-23確認）.
+\bibitem{notice}
+Assembly Line Balancing. \emph{Legal Notice}.
+\url{https://assembly-line-balancing.de/home/legal-notice/}（2026-09-23確認）.
+\end{thebibliography}
+\endgroup
+
+\clearpage
+\appendix
+\section{実測モデルのIDと原記録の対応}
+同じ工程を後から追跡できるように、元の作業IDを保持した。
+日本語名は表示用であり、作業の識別にはIDを使う。
+
+{\small
+\begin{longtable}{P{10mm}P{47mm}P{92mm}}
+\toprule ID & BPMN・ログの作業ID & 原名\\\midrule\endhead
+P01 & \code{Activity_0aprosy} & Calibrate HBW\\
+P02 & \code{Activity_0cr4src} & Calibrate VGR\\
+P03 & \code{Activity_1lx6ugd} & Unload from HBW\\
+P04 & \code{Activity_107pam0} & Pickup and transport to Oven\\
+P05 & \code{Activity_0jtoxii} & Calibrate VGR\\
+P06 & \code{Activity_1e6xoye} & OV Burn\\
+P07 & \code{Activity_075b7q0} & WT Transport\\
+P08 & \code{Activity_0kh9pn6} & Start Milling Machine\\
+P09 & \code{Activity_147au71} & Sorting Machine sort\\
+P10 & \code{Activity_0cwptph} & Pickup and transport to sink\\
+\bottomrule
+\end{longtable}}
+
+\subsection{観測値をたどる例}
+\code{smart_factory_observations.json}の\code{cases}には、生産ごとの記録がある。
+各\code{observations}要素に元の記録ID、元配列の位置、開始・終了時刻、ミリ秒と秒の値が入る。
+\code{source_array_index}は\textbf{0から数えるJSON配列の位置}であり、テキストファイルの行番号ではない。
+
+\begin{lstlisting}
+{
+  "model_node": "P01",
+  "activity_id": "Activity_0aprosy",
+  "source_record_id": "Activity_0aprosy:8a11c446-d840-11ed-8f8e-2a1b4c3d6e5f",
+  "source_array_index": 105,
+  "start_time": "2023-04-11T10:12:02.428+0200",
+  "end_time": "2023-04-11T10:12:15.080+0200",
+  "duration_millis": 12652,
+  "duration_seconds": 12.652
+}
+\end{lstlisting}
+上は最初の採用生産から取り出したP01の実測レコードである。
+完全な生産IDと、同じ生産の残り9作業は配布ファイルを参照する。
+
+\end{document}

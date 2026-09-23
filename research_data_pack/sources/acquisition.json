@@ -1,0 +1,28 @@
+{
+  "retrieved_on": "2026-09-23",
+  "salbp_archive": {
+    "url": "https://assembly-line-balancing.de/wp-content/uploads/2017/01/SALBP-data-sets.zip",
+    "bytes": 79372,
+    "sha256": "cf7a5f89e034dee8fe67b305c37399920926dd174f409b96c189653ed35bb78c",
+    "included_members": [
+      "precedence graphs/JACKSON.IN2",
+      "precedence graphs/MITCHELL.IN2",
+      "precedence graphs/HESKIA.IN2",
+      "precedence graphs/README.DOC"
+    ]
+  },
+  "zenodo_record": "https://zenodo.org/records/14441997",
+  "zenodo_doi": "10.5281/zenodo.14441997",
+  "zenodo_metadata_api": "https://zenodo.org/api/records/14441997",
+  "zenodo_published_license": "cc-by-4.0",
+  "included_files": [
+    "camunda-activity.json",
+    "camunda-process.json",
+    "production_process.bpmn"
+  ],
+  "not_downloaded": [
+    "test_tenhertz_log_20230411-103455.txt",
+    "training_tenhertz_log_20230411-095748.txt"
+  ],
+  "note": "Sensor files are not needed for extraction of the already-recorded activity durations. The separate storage BPMN and older record 7440490 were investigated but are not used."
+}

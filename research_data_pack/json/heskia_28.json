@@ -1,0 +1,634 @@
+{
+  "meta": {
+    "version": 2,
+    "program": "1.0.0",
+    "semantics": "AND-fork-join/FCFS/unlimited-buffer",
+    "title": "HESKIA / original deterministic task data",
+    "time_unit": "unspecified_benchmark_time_unit",
+    "data_kind": "published_benchmark_not_event_log",
+    "retrieved_on": "2026-09-23",
+    "sources": [
+      {
+        "title": "Scholl (1993), Data of Assembly Line Balancing Problems",
+        "landing_url": "https://assembly-line-balancing.de/salbp/benchmark-data-sets-1993/",
+        "download_url": "https://assembly-line-balancing.de/wp-content/uploads/2017/01/SALBP-data-sets.zip",
+        "archive_member": "precedence graphs/HESKIA.IN2",
+        "local_path": "sources/scholl1993/HESKIA.IN2",
+        "sha256": "2b4558e1e1aa9c013a61bb08d917639398bd39acdf638c6eea30f44c51b80908"
+      }
+    ],
+    "assumptions": {
+      "source_facts": "Task times and every listed precedence pair are unchanged.",
+      "time_unit": "Not specified in IN2; abstract benchmark units, not assumed seconds.",
+      "resource_capacity": "One dedicated resource per task is an added modeling assumption, not a source observation.",
+      "source_problem": "SALBP assigns tasks to shared work stations; this simulator does not solve that assignment problem.",
+      "variability": "No repeated measurements or standard deviations supplied; use constant, p2=0.",
+      "configuration": "60 products, interval 1 and 10% improvement are chosen experiment conditions, not measurements.",
+      "layout": "Generated display coordinates; not a physical factory floor plan.",
+      "other": "Unlimited buffers, no transport delay, FCFS, all tasks once per product."
+    },
+    "provenance_warning": "GUI re-save drops extra source metadata; retain provenance.json and the original model."
+  },
+  "nodes": [
+    {
+      "id": "N01",
+      "name": "HESKIA task 1",
+      "service": {
+        "dist": "constant",
+        "p1": 70,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N02",
+      "name": "HESKIA task 2",
+      "service": {
+        "dist": "constant",
+        "p1": 59,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N03",
+      "name": "HESKIA task 3",
+      "service": {
+        "dist": "constant",
+        "p1": 33,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N04",
+      "name": "HESKIA task 4",
+      "service": {
+        "dist": "constant",
+        "p1": 6,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N05",
+      "name": "HESKIA task 5",
+      "service": {
+        "dist": "constant",
+        "p1": 1,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N06",
+      "name": "HESKIA task 6",
+      "service": {
+        "dist": "constant",
+        "p1": 27,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N07",
+      "name": "HESKIA task 7",
+      "service": {
+        "dist": "constant",
+        "p1": 17,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N08",
+      "name": "HESKIA task 8",
+      "service": {
+        "dist": "constant",
+        "p1": 62,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N09",
+      "name": "HESKIA task 9",
+      "service": {
+        "dist": "constant",
+        "p1": 31,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N10",
+      "name": "HESKIA task 10",
+      "service": {
+        "dist": "constant",
+        "p1": 53,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N11",
+      "name": "HESKIA task 11",
+      "service": {
+        "dist": "constant",
+        "p1": 21,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N12",
+      "name": "HESKIA task 12",
+      "service": {
+        "dist": "constant",
+        "p1": 19,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N13",
+      "name": "HESKIA task 13",
+      "service": {
+        "dist": "constant",
+        "p1": 108,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N14",
+      "name": "HESKIA task 14",
+      "service": {
+        "dist": "constant",
+        "p1": 52,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N15",
+      "name": "HESKIA task 15",
+      "service": {
+        "dist": "constant",
+        "p1": 5,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N16",
+      "name": "HESKIA task 16",
+      "service": {
+        "dist": "constant",
+        "p1": 8,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N17",
+      "name": "HESKIA task 17",
+      "service": {
+        "dist": "constant",
+        "p1": 97,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N18",
+      "name": "HESKIA task 18",
+      "service": {
+        "dist": "constant",
+        "p1": 8,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N19",
+      "name": "HESKIA task 19",
+      "service": {
+        "dist": "constant",
+        "p1": 47,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N20",
+      "name": "HESKIA task 20",
+      "service": {
+        "dist": "constant",
+        "p1": 67,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N21",
+      "name": "HESKIA task 21",
+      "service": {
+        "dist": "constant",
+        "p1": 17,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N22",
+      "name": "HESKIA task 22",
+      "service": {
+        "dist": "constant",
+        "p1": 8,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N23",
+      "name": "HESKIA task 23",
+      "service": {
+        "dist": "constant",
+        "p1": 3,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N24",
+      "name": "HESKIA task 24",
+      "service": {
+        "dist": "constant",
+        "p1": 21,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N25",
+      "name": "HESKIA task 25",
+      "service": {
+        "dist": "constant",
+        "p1": 107,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N26",
+      "name": "HESKIA task 26",
+      "service": {
+        "dist": "constant",
+        "p1": 3,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N27",
+      "name": "HESKIA task 27",
+      "service": {
+        "dist": "constant",
+        "p1": 2,
+        "p2": 0
+      },
+      "capacity": 1
+    },
+    {
+      "id": "N28",
+      "name": "HESKIA task 28",
+      "service": {
+        "dist": "constant",
+        "p1": 72,
+        "p2": 0
+      },
+      "capacity": 1
+    }
+  ],
+  "edges": [
+    {
+      "id": "E001",
+      "src": "N01",
+      "dst": "N03"
+    },
+    {
+      "id": "E002",
+      "src": "N01",
+      "dst": "N04"
+    },
+    {
+      "id": "E003",
+      "src": "N01",
+      "dst": "N05"
+    },
+    {
+      "id": "E004",
+      "src": "N01",
+      "dst": "N08"
+    },
+    {
+      "id": "E005",
+      "src": "N01",
+      "dst": "N19"
+    },
+    {
+      "id": "E006",
+      "src": "N01",
+      "dst": "N21"
+    },
+    {
+      "id": "E007",
+      "src": "N01",
+      "dst": "N22"
+    },
+    {
+      "id": "E008",
+      "src": "N01",
+      "dst": "N23"
+    },
+    {
+      "id": "E009",
+      "src": "N01",
+      "dst": "N24"
+    },
+    {
+      "id": "E010",
+      "src": "N01",
+      "dst": "N26"
+    },
+    {
+      "id": "E011",
+      "src": "N02",
+      "dst": "N06"
+    },
+    {
+      "id": "E012",
+      "src": "N02",
+      "dst": "N17"
+    },
+    {
+      "id": "E013",
+      "src": "N03",
+      "dst": "N28"
+    },
+    {
+      "id": "E014",
+      "src": "N04",
+      "dst": "N28"
+    },
+    {
+      "id": "E015",
+      "src": "N05",
+      "dst": "N28"
+    },
+    {
+      "id": "E016",
+      "src": "N06",
+      "dst": "N07"
+    },
+    {
+      "id": "E017",
+      "src": "N07",
+      "dst": "N18"
+    },
+    {
+      "id": "E018",
+      "src": "N08",
+      "dst": "N09"
+    },
+    {
+      "id": "E019",
+      "src": "N09",
+      "dst": "N10"
+    },
+    {
+      "id": "E020",
+      "src": "N10",
+      "dst": "N11"
+    },
+    {
+      "id": "E021",
+      "src": "N10",
+      "dst": "N12"
+    },
+    {
+      "id": "E022",
+      "src": "N11",
+      "dst": "N15"
+    },
+    {
+      "id": "E023",
+      "src": "N12",
+      "dst": "N13"
+    },
+    {
+      "id": "E024",
+      "src": "N13",
+      "dst": "N14"
+    },
+    {
+      "id": "E025",
+      "src": "N13",
+      "dst": "N16"
+    },
+    {
+      "id": "E026",
+      "src": "N14",
+      "dst": "N28"
+    },
+    {
+      "id": "E027",
+      "src": "N15",
+      "dst": "N28"
+    },
+    {
+      "id": "E028",
+      "src": "N16",
+      "dst": "N28"
+    },
+    {
+      "id": "E029",
+      "src": "N17",
+      "dst": "N28"
+    },
+    {
+      "id": "E030",
+      "src": "N18",
+      "dst": "N28"
+    },
+    {
+      "id": "E031",
+      "src": "N19",
+      "dst": "N20"
+    },
+    {
+      "id": "E032",
+      "src": "N20",
+      "dst": "N28"
+    },
+    {
+      "id": "E033",
+      "src": "N21",
+      "dst": "N28"
+    },
+    {
+      "id": "E034",
+      "src": "N22",
+      "dst": "N28"
+    },
+    {
+      "id": "E035",
+      "src": "N23",
+      "dst": "N28"
+    },
+    {
+      "id": "E036",
+      "src": "N24",
+      "dst": "N25"
+    },
+    {
+      "id": "E037",
+      "src": "N25",
+      "dst": "N28"
+    },
+    {
+      "id": "E038",
+      "src": "N26",
+      "dst": "N27"
+    },
+    {
+      "id": "E039",
+      "src": "N27",
+      "dst": "N28"
+    }
+  ],
+  "layout": {
+    "N01": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "N02": {
+      "x": 0.0,
+      "y": 110.0
+    },
+    "N03": {
+      "x": 235.0,
+      "y": 0.0
+    },
+    "N04": {
+      "x": 235.0,
+      "y": 110.0
+    },
+    "N05": {
+      "x": 235.0,
+      "y": 220.0
+    },
+    "N06": {
+      "x": 235.0,
+      "y": 330.0
+    },
+    "N07": {
+      "x": 470.0,
+      "y": 0.0
+    },
+    "N08": {
+      "x": 235.0,
+      "y": 440.0
+    },
+    "N09": {
+      "x": 470.0,
+      "y": 110.0
+    },
+    "N10": {
+      "x": 705.0,
+      "y": 0.0
+    },
+    "N11": {
+      "x": 940.0,
+      "y": 0.0
+    },
+    "N12": {
+      "x": 940.0,
+      "y": 110.0
+    },
+    "N13": {
+      "x": 1175.0,
+      "y": 0.0
+    },
+    "N14": {
+      "x": 1410.0,
+      "y": 0.0
+    },
+    "N15": {
+      "x": 1175.0,
+      "y": 110.0
+    },
+    "N16": {
+      "x": 1410.0,
+      "y": 110.0
+    },
+    "N17": {
+      "x": 235.0,
+      "y": 550.0
+    },
+    "N18": {
+      "x": 705.0,
+      "y": 110.0
+    },
+    "N19": {
+      "x": 235.0,
+      "y": 660.0
+    },
+    "N20": {
+      "x": 470.0,
+      "y": 220.0
+    },
+    "N21": {
+      "x": 235.0,
+      "y": 770.0
+    },
+    "N22": {
+      "x": 235.0,
+      "y": 880.0
+    },
+    "N23": {
+      "x": 235.0,
+      "y": 990.0
+    },
+    "N24": {
+      "x": 235.0,
+      "y": 1100.0
+    },
+    "N25": {
+      "x": 470.0,
+      "y": 330.0
+    },
+    "N26": {
+      "x": 235.0,
+      "y": 1210.0
+    },
+    "N27": {
+      "x": 470.0,
+      "y": 440.0
+    },
+    "N28": {
+      "x": 1645.0,
+      "y": 0.0
+    }
+  },
+  "simulation": {
+    "jobs": 60,
+    "runs": 1,
+    "interval": 1.0,
+    "seed": 42,
+    "improvement": 0.1,
+    "sensitivity": true,
+    "all_traces": false
+  }
+}

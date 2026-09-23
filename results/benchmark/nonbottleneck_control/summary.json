@@ -1,0 +1,821 @@
+{
+  "program_version": "1.0.0",
+  "config": {
+    "jobs": 60,
+    "runs": 50,
+    "interval": 1.0,
+    "seed": 42,
+    "improvement": 0.1,
+    "sensitivity": true,
+    "all_traces": false
+  },
+  "makespan": {
+    "mean": 496.0,
+    "sd": 0.0,
+    "ci_low": 496.0,
+    "ci_high": 496.0,
+    "n": 50
+  },
+  "throughput": {
+    "mean": 0.12096774193548387,
+    "sd": 0.0,
+    "ci_low": 0.12096774193548387,
+    "ci_high": 0.12096774193548387,
+    "n": 50
+  },
+  "mean_flow": {
+    "mean": 230.5,
+    "sd": 0.0,
+    "ci_low": 230.5,
+    "ci_high": 230.5,
+    "n": 50
+  },
+  "nodes": {
+    "N01": {
+      "queue_total": {
+        "mean": 1770.0,
+        "sd": 0.0,
+        "ci_low": 1770.0,
+        "ci_high": 1770.0,
+        "n": 50
+      },
+      "queue_mean": {
+        "mean": 29.5,
+        "sd": 0.0,
+        "ci_low": 29.5,
+        "ci_high": 29.5,
+        "n": 50
+      },
+      "sync_total": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "sync_mean": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "service_mean": {
+        "mean": 2.0,
+        "sd": 0.0,
+        "ci_low": 2.0,
+        "ci_high": 2.0,
+        "n": 50
+      },
+      "utilization": {
+        "mean": 0.24193548387096775,
+        "sd": 0.0,
+        "ci_low": 0.24193548387096775,
+        "ci_high": 0.24193548387096775,
+        "n": 50
+      },
+      "queue_time_average": {
+        "mean": 3.5685483870967745,
+        "sd": 4.485978453382215e-16,
+        "ci_low": 3.5685483870967745,
+        "ci_high": 3.5685483870967745,
+        "n": 50
+      },
+      "delta": {
+        "mean": 0.19999999999998863,
+        "sd": 0.0,
+        "ci_low": 0.19999999999998863,
+        "ci_high": 0.19999999999998863,
+        "n": 50
+      },
+      "gain_percent": {
+        "mean": 0.040322580645159,
+        "sd": 0.0,
+        "ci_low": 0.040322580645159,
+        "ci_high": 0.040322580645159,
+        "n": 50
+      }
+    },
+    "N02": {
+      "queue_total": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "queue_mean": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "sync_total": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "sync_mean": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "service_mean": {
+        "mean": 2.0,
+        "sd": 0.0,
+        "ci_low": 2.0,
+        "ci_high": 2.0,
+        "n": 50
+      },
+      "utilization": {
+        "mean": 0.24193548387096775,
+        "sd": 0.0,
+        "ci_low": 0.24193548387096775,
+        "ci_high": 0.24193548387096775,
+        "n": 50
+      },
+      "queue_time_average": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "delta": {
+        "mean": 0.19999999999998863,
+        "sd": 0.0,
+        "ci_low": 0.19999999999998863,
+        "ci_high": 0.19999999999998863,
+        "n": 50
+      },
+      "gain_percent": {
+        "mean": 0.040322580645159,
+        "sd": 0.0,
+        "ci_low": 0.040322580645159,
+        "ci_high": 0.040322580645159,
+        "n": 50
+      }
+    },
+    "N03": {
+      "queue_total": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "queue_mean": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "sync_total": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "sync_mean": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "service_mean": {
+        "mean": 1.5,
+        "sd": 0.0,
+        "ci_low": 1.5,
+        "ci_high": 1.5,
+        "n": 50
+      },
+      "utilization": {
+        "mean": 0.1814516129032258,
+        "sd": 0.0,
+        "ci_low": 0.1814516129032258,
+        "ci_high": 0.1814516129032258,
+        "n": 50
+      },
+      "queue_time_average": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "delta": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "gain_percent": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      }
+    },
+    "N04": {
+      "queue_total": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "queue_mean": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "sync_total": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "sync_mean": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "service_mean": {
+        "mean": 2.0,
+        "sd": 0.0,
+        "ci_low": 2.0,
+        "ci_high": 2.0,
+        "n": 50
+      },
+      "utilization": {
+        "mean": 0.24193548387096775,
+        "sd": 0.0,
+        "ci_low": 0.24193548387096775,
+        "ci_high": 0.24193548387096775,
+        "n": 50
+      },
+      "queue_time_average": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "delta": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "gain_percent": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      }
+    },
+    "N05": {
+      "queue_total": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "queue_mean": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "sync_total": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "sync_mean": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "service_mean": {
+        "mean": 2.0,
+        "sd": 0.0,
+        "ci_low": 2.0,
+        "ci_high": 2.0,
+        "n": 50
+      },
+      "utilization": {
+        "mean": 0.24193548387096775,
+        "sd": 0.0,
+        "ci_low": 0.24193548387096775,
+        "ci_high": 0.24193548387096775,
+        "n": 50
+      },
+      "queue_time_average": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "delta": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "gain_percent": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      }
+    },
+    "N06": {
+      "queue_total": {
+        "mean": 10620.0,
+        "sd": 0.0,
+        "ci_low": 10620.0,
+        "ci_high": 10620.0,
+        "n": 50
+      },
+      "queue_mean": {
+        "mean": 177.0,
+        "sd": 0.0,
+        "ci_low": 177.0,
+        "ci_high": 177.0,
+        "n": 50
+      },
+      "sync_total": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "sync_mean": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "service_mean": {
+        "mean": 8.0,
+        "sd": 0.0,
+        "ci_low": 8.0,
+        "ci_high": 8.0,
+        "n": 50
+      },
+      "utilization": {
+        "mean": 0.967741935483871,
+        "sd": 0.0,
+        "ci_low": 0.967741935483871,
+        "ci_high": 0.967741935483871,
+        "n": 50
+      },
+      "queue_time_average": {
+        "mean": 21.411290322580648,
+        "sd": 3.588782762705772e-15,
+        "ci_low": 21.411290322580648,
+        "ci_high": 21.411290322580648,
+        "n": 50
+      },
+      "delta": {
+        "mean": 48.000000000000455,
+        "sd": 0.0,
+        "ci_low": 48.000000000000455,
+        "ci_high": 48.000000000000455,
+        "n": 50
+      },
+      "gain_percent": {
+        "mean": 9.6774193548388,
+        "sd": 0.0,
+        "ci_low": 9.6774193548388,
+        "ci_high": 9.6774193548388,
+        "n": 50
+      }
+    },
+    "N07": {
+      "queue_total": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "queue_mean": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "sync_total": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "sync_mean": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "service_mean": {
+        "mean": 2.0,
+        "sd": 0.0,
+        "ci_low": 2.0,
+        "ci_high": 2.0,
+        "n": 50
+      },
+      "utilization": {
+        "mean": 0.24193548387096775,
+        "sd": 0.0,
+        "ci_low": 0.24193548387096775,
+        "ci_high": 0.24193548387096775,
+        "n": 50
+      },
+      "queue_time_average": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "delta": {
+        "mean": 0.19999999999998863,
+        "sd": 0.0,
+        "ci_low": 0.19999999999998863,
+        "ci_high": 0.19999999999998863,
+        "n": 50
+      },
+      "gain_percent": {
+        "mean": 0.040322580645159,
+        "sd": 0.0,
+        "ci_low": 0.040322580645159,
+        "ci_high": 0.040322580645159,
+        "n": 50
+      }
+    },
+    "N08": {
+      "queue_total": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "queue_mean": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "sync_total": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "sync_mean": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "service_mean": {
+        "mean": 2.0,
+        "sd": 0.0,
+        "ci_low": 2.0,
+        "ci_high": 2.0,
+        "n": 50
+      },
+      "utilization": {
+        "mean": 0.24193548387096775,
+        "sd": 0.0,
+        "ci_low": 0.24193548387096775,
+        "ci_high": 0.24193548387096775,
+        "n": 50
+      },
+      "queue_time_average": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "delta": {
+        "mean": 0.19999999999998863,
+        "sd": 0.0,
+        "ci_low": 0.19999999999998863,
+        "ci_high": 0.19999999999998863,
+        "n": 50
+      },
+      "gain_percent": {
+        "mean": 0.040322580645159,
+        "sd": 0.0,
+        "ci_low": 0.040322580645159,
+        "ci_high": 0.040322580645159,
+        "n": 50
+      }
+    },
+    "N09": {
+      "queue_total": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "queue_mean": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "sync_total": {
+        "mean": 11010.0,
+        "sd": 0.0,
+        "ci_low": 11010.0,
+        "ci_high": 11010.0,
+        "n": 50
+      },
+      "sync_mean": {
+        "mean": 183.5,
+        "sd": 0.0,
+        "ci_low": 183.5,
+        "ci_high": 183.5,
+        "n": 50
+      },
+      "service_mean": {
+        "mean": 2.0,
+        "sd": 0.0,
+        "ci_low": 2.0,
+        "ci_high": 2.0,
+        "n": 50
+      },
+      "utilization": {
+        "mean": 0.24193548387096775,
+        "sd": 0.0,
+        "ci_low": 0.24193548387096775,
+        "ci_high": 0.24193548387096775,
+        "n": 50
+      },
+      "queue_time_average": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "delta": {
+        "mean": 0.19999999999998863,
+        "sd": 0.0,
+        "ci_low": 0.19999999999998863,
+        "ci_high": 0.19999999999998863,
+        "n": 50
+      },
+      "gain_percent": {
+        "mean": 0.040322580645159,
+        "sd": 0.0,
+        "ci_low": 0.040322580645159,
+        "ci_high": 0.040322580645159,
+        "n": 50
+      }
+    },
+    "N10": {
+      "queue_total": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "queue_mean": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "sync_total": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "sync_mean": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "service_mean": {
+        "mean": 2.0,
+        "sd": 0.0,
+        "ci_low": 2.0,
+        "ci_high": 2.0,
+        "n": 50
+      },
+      "utilization": {
+        "mean": 0.24193548387096775,
+        "sd": 0.0,
+        "ci_low": 0.24193548387096775,
+        "ci_high": 0.24193548387096775,
+        "n": 50
+      },
+      "queue_time_average": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "delta": {
+        "mean": 0.19999999999998863,
+        "sd": 0.0,
+        "ci_low": 0.19999999999998863,
+        "ci_high": 0.19999999999998863,
+        "n": 50
+      },
+      "gain_percent": {
+        "mean": 0.040322580645159,
+        "sd": 0.0,
+        "ci_low": 0.040322580645159,
+        "ci_high": 0.040322580645159,
+        "n": 50
+      }
+    },
+    "N11": {
+      "queue_total": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "queue_mean": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "sync_total": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "sync_mean": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "service_mean": {
+        "mean": 2.0,
+        "sd": 0.0,
+        "ci_low": 2.0,
+        "ci_high": 2.0,
+        "n": 50
+      },
+      "utilization": {
+        "mean": 0.24193548387096775,
+        "sd": 0.0,
+        "ci_low": 0.24193548387096775,
+        "ci_high": 0.24193548387096775,
+        "n": 50
+      },
+      "queue_time_average": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "delta": {
+        "mean": 0.19999999999998863,
+        "sd": 0.0,
+        "ci_low": 0.19999999999998863,
+        "ci_high": 0.19999999999998863,
+        "n": 50
+      },
+      "gain_percent": {
+        "mean": 0.040322580645159,
+        "sd": 0.0,
+        "ci_low": 0.040322580645159,
+        "ci_high": 0.040322580645159,
+        "n": 50
+      }
+    },
+    "N12": {
+      "queue_total": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "queue_mean": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "sync_total": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "sync_mean": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "service_mean": {
+        "mean": 2.0,
+        "sd": 0.0,
+        "ci_low": 2.0,
+        "ci_high": 2.0,
+        "n": 50
+      },
+      "utilization": {
+        "mean": 0.24193548387096775,
+        "sd": 0.0,
+        "ci_low": 0.24193548387096775,
+        "ci_high": 0.24193548387096775,
+        "n": 50
+      },
+      "queue_time_average": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "ci_low": 0.0,
+        "ci_high": 0.0,
+        "n": 50
+      },
+      "delta": {
+        "mean": 0.19999999999998863,
+        "sd": 0.0,
+        "ci_low": 0.19999999999998863,
+        "ci_high": 0.19999999999998863,
+        "n": 50
+      },
+      "gain_percent": {
+        "mean": 0.040322580645159,
+        "sd": 0.0,
+        "ci_low": 0.040322580645159,
+        "ci_high": 0.040322580645159,
+        "n": 50
+      }
+    }
+  },
+  "queue_top": [
+    "N06"
+  ],
+  "improvement_top": [
+    "N06"
+  ]
+}

@@ -1,0 +1,13 @@
+process,name,dist_type,p1,p2,capacity
+N01,Process 01,lognormal,3.0,0.44999999999999996,1
+N02,Process 02,lognormal,3.0,0.44999999999999996,1
+N03,Process 03,lognormal,3.0,0.44999999999999996,1
+N04,Process 04,lognormal,3.0,0.44999999999999996,1
+N05,Process 05,lognormal,3.0,0.44999999999999996,1
+N06,Process 06,lognormal,4.5,0.6749999999999999,1
+N07,Process 07,lognormal,3.0,0.44999999999999996,1
+N08,Process 08,lognormal,3.0,0.44999999999999996,1
+N09,Process 09,lognormal,3.0,0.44999999999999996,1
+N10,Process 10,lognormal,3.0,0.44999999999999996,1
+N11,Process 11,lognormal,3.0,0.44999999999999996,1
+N12,Process 12,lognormal,3.0,0.44999999999999996,1

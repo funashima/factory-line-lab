@@ -1,0 +1,16 @@
+scenario,method,expected,predicted,count
+fork_arm,improvement,N06,N06,50
+fork_arm,queue,N06,N01,50
+fork_arm,utilization,N06,N06,50
+fork_join,improvement,N09,N09,50
+fork_join,queue,N09,N01,50
+fork_join,utilization,N09,N09,50
+nonbottleneck_control,improvement,N06,N06,50
+nonbottleneck_control,queue,N06,N06,50
+nonbottleneck_control,utilization,N06,N06,50
+serial_head,improvement,N01,N01,50
+serial_head,queue,N01,N01,50
+serial_head,utilization,N01,N01,50
+serial_middle,improvement,N06,N06,50
+serial_middle,queue,N06,N01,50
+serial_middle,utilization,N06,N06,50

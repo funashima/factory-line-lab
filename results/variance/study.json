@@ -1,0 +1,18 @@
+{
+  "jobs": 60,
+  "runs": 50,
+  "seed": 42,
+  "cv": [
+    0,
+    0.15,
+    0.5
+  ],
+  "interval": [
+    1,
+    5
+  ],
+  "target": "N06",
+  "dist": "lognormal",
+  "note": "Exploratory finite-batch comparison, not a real-factory validation or independent ground truth.",
+  "script_sha256": "197e2147985d76b5c584f1a4c416ce20ea82acb557c1ddbb4b30e2ce01ca253c"
+}

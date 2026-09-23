@@ -1,0 +1,6 @@
+name,kind,perturbed,expected,reason
+serial_middle,serial,N06,N06,"One station 3 -> 4.5, std 0.45 -> 0.675; others 3"
+serial_head,serial,N01,N01,"One station 3 -> 4.5, std 0.45 -> 0.675; others 3"
+fork_arm,fork,N06,N06,"One station 3 -> 4.5, std 0.45 -> 0.675; others 3"
+fork_join,fork,N09,N09,"One station 3 -> 4.5, std 0.45 -> 0.675; others 3"
+nonbottleneck_control,fork,N03,N06,N03 1 -> 1.5; N06 remains 8 (deterministic control)

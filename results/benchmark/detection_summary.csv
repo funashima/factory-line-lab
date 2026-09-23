@@ -1,0 +1,16 @@
+scenario,method,expected,perturbed,runs,correct,wrong,ambiguous,top_set_hits,detection_rate,ci_low,ci_high,uncertainty,mean_makespan
+serial_middle,queue,N06,N06,50,0,50,0,0,0.0,6.938893903907228e-18,0.07134759913335872,Wilson95,303.8955139031851
+serial_middle,utilization,N06,N06,50,50,0,0,50,1.0,0.9286524008666414,1.0,Wilson95,303.8955139031851
+serial_middle,improvement,N06,N06,50,50,0,0,50,1.0,0.9286524008666414,1.0,Wilson95,303.8955139031851
+serial_head,queue,N01,N01,50,50,0,0,50,1.0,0.9286524008666414,1.0,Wilson95,302.7007010459457
+serial_head,utilization,N01,N01,50,50,0,0,50,1.0,0.9286524008666414,1.0,Wilson95,302.7007010459457
+serial_head,improvement,N01,N01,50,50,0,0,50,1.0,0.9286524008666414,1.0,Wilson95,302.7007010459457
+fork_arm,queue,N06,N06,50,0,50,0,0,0.0,6.938893903907228e-18,0.07134759913335872,Wilson95,294.67824063070503
+fork_arm,utilization,N06,N06,50,50,0,0,50,1.0,0.9286524008666414,1.0,Wilson95,294.67824063070503
+fork_arm,improvement,N06,N06,50,50,0,0,50,1.0,0.9286524008666414,1.0,Wilson95,294.67824063070503
+fork_join,queue,N09,N09,50,0,50,0,0,0.0,6.938893903907228e-18,0.07134759913335872,Wilson95,294.0012457512037
+fork_join,utilization,N09,N09,50,50,0,0,50,1.0,0.9286524008666414,1.0,Wilson95,294.0012457512037
+fork_join,improvement,N09,N09,50,50,0,0,50,1.0,0.9286524008666414,1.0,Wilson95,294.0012457512037
+nonbottleneck_control,queue,N06,N03,50,50,0,0,50,1.0,,,deterministic,496.0
+nonbottleneck_control,utilization,N06,N03,50,50,0,0,50,1.0,,,deterministic,496.0
+nonbottleneck_control,improvement,N06,N03,50,50,0,0,50,1.0,,,deterministic,496.0

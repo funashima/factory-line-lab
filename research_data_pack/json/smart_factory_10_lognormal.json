@@ -1,0 +1,258 @@
+{
+  "meta": {
+    "version": 2,
+    "program": "1.0.0",
+    "semantics": "AND-fork-join/FCFS/unlimited-buffer",
+    "title": "St.Gallen automatic tasks / lognormal",
+    "time_unit": "seconds",
+    "data_kind": "observed_elapsed_times_with_assumed_resources_and_distribution",
+    "retrieved_on": "2026-09-23",
+    "sources": [
+      {
+        "creator": "Ronny Seiger",
+        "title": "Dataset from a Smart Factory to evaluate a Semi-automated Approach to Detecting Process-Level Activities from Sensor Data",
+        "doi": "10.5281/zenodo.14441997",
+        "url": "https://zenodo.org/records/14441997",
+        "publication_date": "2024-12-13",
+        "license": "CC-BY-4.0",
+        "files": [
+          {
+            "path": "sources/zenodo_14441997/camunda-activity.json",
+            "sha256": "4b076db16761a0ccc300b150afe2284bf57e8f8afd68fe2e3b130c6b6eaed154",
+            "download_url": "https://zenodo.org/records/14441997/files/camunda-activity.json?download=1"
+          },
+          {
+            "path": "sources/zenodo_14441997/camunda-process.json",
+            "sha256": "e0c59de80c667baaa001fd44a1494874338dd5375f5b3db69040b53b3fc6cb07",
+            "download_url": "https://zenodo.org/records/14441997/files/camunda-process.json?download=1"
+          },
+          {
+            "path": "sources/zenodo_14441997/production_process.bpmn",
+            "sha256": "cb68fc08e5f22d7fcf39f9eae36372b2572d75a590dad33891d31881781491f7",
+            "download_url": "https://zenodo.org/records/14441997/files/production_process.bpmn?download=1"
+          }
+        ]
+      }
+    ],
+    "assumptions": {
+      "observed": "BPM activity elapsed time, durationInMillis / 1000; includes command/network/control overhead, not isolated machining time.",
+      "graph": "Ten automatic service tasks and their nine direct links from production_process.bpmn; manual Enter Color and start/end events excluded.",
+      "grouping": "Group by activityId, never by name; two Calibrate VGR activities are distinct.",
+      "filter": {
+        "processDefinitionKey": "production_process_new3",
+        "processDefinitionVersion": 2,
+        "start_local_date": "2023-04-11",
+        "state": "COMPLETED",
+        "activityType": "serviceTask",
+        "processDefinitionId": "production_process_new3:2:912e1f83-c3fb-11ed-9ece-2a1b4c3d6e5f"
+      },
+      "sample_size": "15 observations per activity from one day; no outliers removed.",
+      "capacity": "capacity=1 for each separate task is assumed. Shared robot and machine use between different tasks is not modeled.",
+      "simulation": "Default jobs=1 avoids inter-product resource competition. interval=0 is a single-product placeholder, not an observed arrival interval.",
+      "independence": "Lognormal model draws independently across tasks/products, discarding empirical dependence.",
+      "distribution": "Mean/SD moment matching only; lognormal distribution and stationarity have not been validated. Multimodal short calibration times remain in the data.",
+      "layout": "Generated coordinates, not source factory geometry."
+    },
+    "provenance_warning": "GUI re-save drops extra source metadata; retain provenance.json and the original model."
+  },
+  "nodes": [
+    {
+      "id": "P01",
+      "name": "HBWの原点調整",
+      "service": {
+        "dist": "lognormal",
+        "p1": 11.365733333333333,
+        "p2": 3.410246439914919
+      },
+      "capacity": 1
+    },
+    {
+      "id": "P02",
+      "name": "VGRの原点調整（前半）",
+      "service": {
+        "dist": "lognormal",
+        "p1": 1.0122,
+        "p2": 0.8499560660914859
+      },
+      "capacity": 1
+    },
+    {
+      "id": "P03",
+      "name": "HBWから取り出す",
+      "service": {
+        "dist": "lognormal",
+        "p1": 50.33233333333333,
+        "p2": 6.258984829446233
+      },
+      "capacity": 1
+    },
+    {
+      "id": "P04",
+      "name": "炉まで運ぶ",
+      "service": {
+        "dist": "lognormal",
+        "p1": 32.46353333333333,
+        "p2": 0.1609631131953019
+      },
+      "capacity": 1
+    },
+    {
+      "id": "P05",
+      "name": "VGRの原点調整（後半）",
+      "service": {
+        "dist": "lognormal",
+        "p1": 5.763733333333334,
+        "p2": 0.024437870688943424
+      },
+      "capacity": 1
+    },
+    {
+      "id": "P06",
+      "name": "炉で処理する",
+      "service": {
+        "dist": "lognormal",
+        "p1": 27.667133333333332,
+        "p2": 0.0967019475846621
+      },
+      "capacity": 1
+    },
+    {
+      "id": "P07",
+      "name": "WTで運ぶ",
+      "service": {
+        "dist": "lognormal",
+        "p1": 32.610533333333336,
+        "p2": 0.9977116579357752
+      },
+      "capacity": 1
+    },
+    {
+      "id": "P08",
+      "name": "フライス盤を動かす",
+      "service": {
+        "dist": "lognormal",
+        "p1": 11.053333333333333,
+        "p2": 0.10249645754621875
+      },
+      "capacity": 1
+    },
+    {
+      "id": "P09",
+      "name": "仕分ける",
+      "service": {
+        "dist": "lognormal",
+        "p1": 28.917066666666667,
+        "p2": 9.400598685088905
+      },
+      "capacity": 1
+    },
+    {
+      "id": "P10",
+      "name": "排出口まで運ぶ",
+      "service": {
+        "dist": "lognormal",
+        "p1": 36.97366666666667,
+        "p2": 0.7627978263009954
+      },
+      "capacity": 1
+    }
+  ],
+  "edges": [
+    {
+      "id": "E001",
+      "src": "P01",
+      "dst": "P02"
+    },
+    {
+      "id": "E002",
+      "src": "P02",
+      "dst": "P03"
+    },
+    {
+      "id": "E003",
+      "src": "P03",
+      "dst": "P04"
+    },
+    {
+      "id": "E004",
+      "src": "P04",
+      "dst": "P05"
+    },
+    {
+      "id": "E005",
+      "src": "P05",
+      "dst": "P06"
+    },
+    {
+      "id": "E006",
+      "src": "P06",
+      "dst": "P07"
+    },
+    {
+      "id": "E007",
+      "src": "P07",
+      "dst": "P08"
+    },
+    {
+      "id": "E008",
+      "src": "P08",
+      "dst": "P09"
+    },
+    {
+      "id": "E009",
+      "src": "P09",
+      "dst": "P10"
+    }
+  ],
+  "layout": {
+    "P01": {
+      "x": 0.0,
+      "y": 0.0
+    },
+    "P02": {
+      "x": 235.0,
+      "y": 0.0
+    },
+    "P03": {
+      "x": 470.0,
+      "y": 0.0
+    },
+    "P04": {
+      "x": 705.0,
+      "y": 0.0
+    },
+    "P05": {
+      "x": 940.0,
+      "y": 0.0
+    },
+    "P06": {
+      "x": 1175.0,
+      "y": 0.0
+    },
+    "P07": {
+      "x": 1410.0,
+      "y": 0.0
+    },
+    "P08": {
+      "x": 1645.0,
+      "y": 0.0
+    },
+    "P09": {
+      "x": 1880.0,
+      "y": 0.0
+    },
+    "P10": {
+      "x": 2115.0,
+      "y": 0.0
+    }
+  },
+  "simulation": {
+    "jobs": 1,
+    "runs": 50,
+    "interval": 0.0,
+    "seed": 42,
+    "improvement": 0.1,
+    "sensitivity": true,
+    "all_traces": false
+  }
+}

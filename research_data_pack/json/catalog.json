@@ -1,0 +1,89 @@
+{
+  "schema": "research.data_catalog.v1",
+  "retrieved_on": "2026-09-23",
+  "models": [
+    {
+      "file": "jackson_11.json",
+      "title": "JACKSON / original deterministic task data",
+      "nodes": 11,
+      "edges": 13,
+      "time_unit": "unspecified_benchmark_time_unit",
+      "default_simulation": {
+        "jobs": 60,
+        "runs": 1,
+        "interval": 1.0,
+        "seed": 42,
+        "improvement": 0.1,
+        "sensitivity": true,
+        "all_traces": false
+      }
+    },
+    {
+      "file": "mitchell_21.json",
+      "title": "MITCHELL / original deterministic task data",
+      "nodes": 21,
+      "edges": 27,
+      "time_unit": "unspecified_benchmark_time_unit",
+      "default_simulation": {
+        "jobs": 60,
+        "runs": 1,
+        "interval": 1.0,
+        "seed": 42,
+        "improvement": 0.1,
+        "sensitivity": true,
+        "all_traces": false
+      }
+    },
+    {
+      "file": "heskia_28.json",
+      "title": "HESKIA / original deterministic task data",
+      "nodes": 28,
+      "edges": 39,
+      "time_unit": "unspecified_benchmark_time_unit",
+      "default_simulation": {
+        "jobs": 60,
+        "runs": 1,
+        "interval": 1.0,
+        "seed": 42,
+        "improvement": 0.1,
+        "sensitivity": true,
+        "all_traces": false
+      }
+    },
+    {
+      "file": "smart_factory_10_mean.json",
+      "title": "St.Gallen automatic tasks / mean",
+      "nodes": 10,
+      "edges": 9,
+      "time_unit": "seconds",
+      "default_simulation": {
+        "jobs": 1,
+        "runs": 1,
+        "interval": 0.0,
+        "seed": 42,
+        "improvement": 0.1,
+        "sensitivity": true,
+        "all_traces": false
+      }
+    },
+    {
+      "file": "smart_factory_10_lognormal.json",
+      "title": "St.Gallen automatic tasks / lognormal",
+      "nodes": 10,
+      "edges": 9,
+      "time_unit": "seconds",
+      "default_simulation": {
+        "jobs": 1,
+        "runs": 50,
+        "interval": 0.0,
+        "seed": 42,
+        "improvement": 0.1,
+        "sensitivity": true,
+        "all_traces": false
+      }
+    }
+  ],
+  "observations": "smart_factory_observations.json",
+  "audit": "provenance.json",
+  "warning": "Only files in models are inputs for mock_line_editor.py. Keep source/provenance when editing models."
+}

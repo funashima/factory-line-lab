@@ -1,0 +1,199 @@
+{
+  "validated_on": "2026-09-23",
+  "package": "factory-line-lab",
+  "program_version": "1.0.0",
+  "program_sha256": "18f495001e2dce2201fa069f498b3829f8b1f4eda8b722312691d45a4a4915eb",
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux",
+    "python_packages": {
+      "numpy": "2.3.5",
+      "networkx": "3.7",
+      "scipy": "1.17.0",
+      "matplotlib": "3.10.8",
+      "PyQt6": "6.11.0",
+      "PyQt6-Qt6": "6.11.2",
+      "pyqtgraph": "0.14.0",
+      "pytest": "9.1.1"
+    }
+  },
+  "tests": {
+    "command": "QT_QPA_PLATFORM=offscreen python -m pytest -q tests",
+    "passed": 27,
+    "failed": 0,
+    "skipped": 0
+  },
+  "data_validation": {
+    "models": 5,
+    "observed_production_replays": 15,
+    "regenerated_json_files": 8,
+    "regeneration_byte_identical": true,
+    "report": "research_data_pack/validation.json"
+  },
+  "simulation_checks": {
+    "smart_factory_mean_makespan_seconds": 238.15926666666667,
+    "csv_cli_run": true,
+    "builtin_scenarios": 5,
+    "variance_conditions": 12,
+    "jobs": 60,
+    "runs_per_condition": 50,
+    "seed": 42,
+    "aggregate_csv_matches_documented_results": true
+  },
+  "documents": {
+    "command": "python build_docs.py --out build/docs",
+    "engine": "LuaLaTeX (TeX Live 2023)",
+    "passes_per_document": 2,
+    "font_environment": "Fallback fonts used; original proprietary fonts were unavailable.",
+    "pages": {
+      "docs/easy-guide.pdf": 35,
+      "research_data_pack/data_sources_guide.pdf": 13
+    },
+    "visual_review": "All 48 pages visually reviewed; no clipped text or overfull boxes.",
+    "warnings": "TeX made small math font size substitutions; no undefined references or missing characters."
+  },
+  "preserved_from_attachment": {
+    "verified_byte_identical_count": 22,
+    "files": [
+      "LICENSE",
+      "mock_line_editor.py",
+      "plan.md",
+      "research_data_pack/convert_sources.py",
+      "research_data_pack/json/catalog.json",
+      "research_data_pack/json/heskia_28.json",
+      "research_data_pack/json/jackson_11.json",
+      "research_data_pack/json/mitchell_21.json",
+      "research_data_pack/json/provenance.json",
+      "research_data_pack/json/smart_factory_10_lognormal.json",
+      "research_data_pack/json/smart_factory_10_mean.json",
+      "research_data_pack/json/smart_factory_observations.json",
+      "research_data_pack/sources/acquisition.json",
+      "research_data_pack/sources/scholl1993/HESKIA.IN2",
+      "research_data_pack/sources/scholl1993/JACKSON.IN2",
+      "research_data_pack/sources/scholl1993/MITCHELL.IN2",
+      "research_data_pack/sources/scholl1993/README.DOC",
+      "research_data_pack/sources/zenodo_14441997/camunda-activity.json",
+      "research_data_pack/sources/zenodo_14441997/camunda-process.json",
+      "research_data_pack/sources/zenodo_14441997/production_process.bpmn",
+      "research_data_pack/sources/zenodo_14441997_metadata.json",
+      "research_data_pack/verify_data.py"
+    ]
+  },
+  "execution_checks": [
+    {
+      "name": "validate_jackson",
+      "command": [
+        "python",
+        "mock_line_editor.py",
+        "validate",
+        "--model",
+        "research_data_pack/json/jackson_11.json"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 1.233
+    },
+    {
+      "name": "data_check",
+      "command": [
+        "python",
+        "research_data_pack/verify_data.py",
+        "--program",
+        "mock_line_editor.py",
+        "--out",
+        "verification/data_check.json"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 1.972
+    },
+    {
+      "name": "rebuild_data",
+      "command": [
+        "python",
+        "research_data_pack/convert_sources.py",
+        "--out",
+        "verification/rebuilt_data"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.11
+    },
+    {
+      "name": "smart_mean",
+      "command": [
+        "python",
+        "mock_line_editor.py",
+        "run",
+        "--model",
+        "research_data_pack/json/smart_factory_10_mean.json",
+        "--out",
+        "verification/smart_mean"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 5.346
+    },
+    {
+      "name": "csv_run",
+      "command": [
+        "python",
+        "mock_line_editor.py",
+        "run",
+        "--csv-dir",
+        "examples/fork",
+        "--jobs",
+        "4",
+        "--runs",
+        "2",
+        "--interval",
+        "1",
+        "--seed",
+        "42",
+        "--out",
+        "verification/csv_run"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 5.127
+    },
+    {
+      "name": "benchmark",
+      "command": [
+        "python",
+        "mock_line_editor.py",
+        "benchmark",
+        "--jobs",
+        "60",
+        "--runs",
+        "50",
+        "--interval",
+        "1",
+        "--seed",
+        "42",
+        "--out",
+        "results/benchmark"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 26.156
+    },
+    {
+      "name": "variance",
+      "command": [
+        "python",
+        "variance_sweep.py",
+        "--jobs",
+        "60",
+        "--runs",
+        "50",
+        "--seed",
+        "42",
+        "--out",
+        "results/variance"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 19.753
+    }
+  ],
+  "execution_check_path_note": "Temporary output paths in command records are normalized to verification/; calculations used the bundled scripts.",
+  "limitations": [
+    "Offscreen Qt checks were performed on Linux; all desktop operating systems were not tested.",
+    "Numerical consistency does not establish real-factory bottleneck accuracy.",
+    "Document cover date and acquisition record date differ as documented in README.md."
+  ]
+}

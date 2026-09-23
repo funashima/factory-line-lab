@@ -1,0 +1,13 @@
+process,name,dist_type,p1,p2,capacity
+N01,Process 01,normal,4.5,0.675,1
+N02,Process 02,normal,3,0.45,1
+N03,Process 03,normal,3,0.45,1
+N04,Process 04,normal,3,0.45,1
+N05,Process 05,normal,3,0.45,1
+N06,Process 06,normal,3,0.45,1
+N07,Process 07,normal,3,0.45,1
+N08,Process 08,normal,3,0.45,1
+N09,Process 09,normal,3,0.45,1
+N10,Process 10,normal,3,0.45,1
+N11,Process 11,normal,3,0.45,1
+N12,Process 12,normal,3,0.45,1
